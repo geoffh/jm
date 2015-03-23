@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="486.0" prefWidth="486.0000999999975" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="jmusic.ui.TrackEditController">
+  <children>
+    <SplitPane dividerPositions="0.5971074380165289" focusTraversable="true" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <items>
+        <AnchorPane minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
+          <children>
+            <TableView id="" fx:id="trackTableView" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+          </children>
+        </AnchorPane>
+        <AnchorPane maxHeight="192.0" minHeight="192.0" minWidth="0.0" prefHeight="192.0" prefWidth="485.0">
+          <children>
+            <GridPane alignment="CENTER_RIGHT" prefWidth="325.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <Label prefWidth="94.0" text="Track Number" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <TextField fx:id="trackNumber" alignment="CENTER_LEFT" editable="true" prefColumnCount="12" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                <Label prefWidth="94.0" text="Track Name" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextField fx:id="trackName" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <Button fx:id="upButton" defaultButton="false" focusTraversable="false" mnemonicParsing="false" onAction="#handleUpButtonAction" text="" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <graphic>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                        <Image url="@../resources/4-arrow-up.png" />
+                      </image>
+                    </ImageView>
+                  </graphic>
+                </Button>
+                <Label prefWidth="94.0" text="Artist" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextField fx:id="trackArtist" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                <Button fx:id="downButton" defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#handleDownButtonAction" text="" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                  <graphic>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                        <Image url="@../resources/4-arrow-down.png" />
+                      </image>
+                    </ImageView>
+                  </graphic>
+                </Button>
+                <Label prefWidth="94.0" text="Album" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField fx:id="trackAlbum" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+              </children>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+            <Separator prefWidth="200.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="467.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+              <children>
+                <Button fx:id="cancelButton" cancelButton="true" mnemonicParsing="false" onAction="#handleCancelButtonAction" text="Cancel">
+                  <HBox.margin>
+                    <Insets right="20.0" fx:id="x1" />
+                  </HBox.margin>
+                </Button>
+                <Button fx:id="okButton" defaultButton="false" disable="true" mnemonicParsing="false" onAction="#handleOKButtonAction" text="OK" HBox.margin="$x1" />
+              </children>
+            </HBox>
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+  </children>
+</AnchorPane>

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+theRootDir=`pwd`/..
+theClassesFile=$theRootDir/build/classes/jmusic/resources/classes
+theJavaDir=$theRootDir/src
+theClingJarFile=$theRootDir/libs/cling.jar
+
+theJarFile=`pwd`/../build/jmusic.jar
+theTmpRootDir=/tmp/jmusic.$$
+theTmpDir=$theTmpRootDir/jmusic/resources
+theFile=$theTmpDir/classes
+mkdir -p $theTmpDir
+
+theCwd=`pwd`
+cd $theJavaDir
+find . -name "*.java" | sed 's/\.java//g' | sed 's/\.\///g' > $theClassesFile
+
+jar tvf $theClingJarFile org/teleal | grep "\.class" | awk '{print $8}' | sed 's/\.class//g' >> $theClassesFile

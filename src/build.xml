@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jmusic" default="main" basedir=".">
+    <property name="theLibDir" value="../libs"/>
+    <property name="theBuildDir" value="../build"/>
+    <property name="theBuildClassDir" value="${theBuildDir}/classes"/>
+    <property name="theBuildManifestDir" value="${theBuildClassDir}/META-INF"/>
+    <property name="theBuildResourcesDir" value="${theBuildClassDir}/jmusic/resources"/>
+    <property name="theBuildFXMLDir" value="${theBuildClassDir}/jmusic/ui"/>
+    <property name="theSourceManifestFile" value="META-INF/MANIFEST.MF"/>
+    <property name="theSourceResourcesDir" value="jmusic/resources"/>
+    <property name="theSourceFXMLDir" value="jmusic/ui"/>
+    <property name="theScriptsDir" value="../scripts"/>
+    <property name="theJarFile" value="${theBuildDir}/jmusic.jar"/>
+    <uptodate property="buildNotNeeded" targetfile="${theJarFile}">
+        <srcfiles dir="." includes="**/*.java"/>
+    </uptodate>
+
+    <path id="classpath">
+        <fileset dir="${theLibDir}" includes="**/*.jar"/>
+    </path>
+
+    <target name="main" unless="buildNotNeeded">
+        <antcall target="build"/>
+    </target>
+
+    <target name="build" depends="prepare, compile, resources, jar, finalise"/>
+
+    <target name="prepare" unless="${buildNotNeeded}">
+        <mkdir dir="${theBuildClassDir}"/>
+        <mkdir dir="${theBuildManifestDir}"/>
+    </target>
+
+    <target name="compile" depends="prepare">
+        <javac srcdir="."
+               destdir="${theBuildDir}/classes"
+               debug="true"
+               classpathref="classpath">
+            <include name="**/*.java"/>
+        </javac>
+    </target>
+
+    <target name="resources">
+        <copy todir="${theBuildResourcesDir}">
+            <fileset dir="jmusic/resources"/>
+        </copy>
+        <copy todir="${theBuildFXMLDir}">
+            <fileset dir="${theSourceFXMLDir}" includes="*.fxml"/>
+        </copy>
+        <copy file="${theSourceManifestFile}" todir="${theBuildManifestDir}"/>
+        <exec executable="${theScriptsDir}/listClasses" dir="${theScriptsDir}"/>
+    </target>
+
+    <target name="jar">
+        <jar jarfile="${theJarFile}"
+             basedir="${theBuildClassDir}"
+             manifest="${theSourceManifestFile}">
+            <include name="**"/>
+            <zipgroupfileset dir="${theLibDir}" includes="*.jar"/>
+        </jar>
+    </target>
+
+    <target name="clean">
+        <delete dir="${theBuildDir}"/>
+    </target>
+
+    <target name="finalise">
+        <delete dir="${theBuildClassDir}"/>
+    </target>
+</project>
