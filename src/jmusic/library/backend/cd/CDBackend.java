@@ -95,6 +95,7 @@ public class CDBackend implements Backend, CDPollListener {
                     theTitle = LibraryItem.sUnknown;
                 }
                 theTrack.setTitle( theTitle );
+                theTrack.setDuration( 0 );
                 return theTrack;
             } catch ( URISyntaxException theException ) {
                 mLogger.throwing( "CDBackend", "getTrack", theException );

@@ -38,8 +38,6 @@ public class UPNPMediaRendererPlaying extends Playing implements ProgressListene
                 this );
         } catch( Exception theException ) {
             mLogger.throwing( "MediaRendererPlaying", "onEntry", theException );
-            // Todo:
-            theException.printStackTrace();
         }
     }
 

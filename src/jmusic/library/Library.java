@@ -21,6 +21,7 @@ import jmusic.util.ConfigListener;
 import jmusic.util.JMusicExecutor;
 import jmusic.util.ProgressListener;
 
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -168,7 +169,19 @@ public class Library implements PersistenceListener, ConfigListener {
     public LibraryItem getRootOfRoots() {
         return new LibraryConverter().convert( sRootOfRoots );
     }
+/*
+    public InputStream getTrackInputStream( LibraryItem inItem, ProgressListener inListener ) throws LibraryException {
+        String theUri = inItem.getUri();
+        Backend theBackend = BackendFactory.getBackend( theUri );
+        return theBackend.getTrackInputStream( theUri, inListener );
+    }
 
+    public long getTrackInputStreamLength( LibraryItem inItem ) throws LibraryException {
+        String theUri = inItem.getUri();
+        Backend theBackend = BackendFactory.getBackend( theUri );
+        return theBackend.getTrackInputStreamLength( theUri );
+    }
+*/
     public List< LibraryItem > getTracks( LibraryItem inContainer ) {
         PersistentContainer theContainer = PersistentContainer.getContainerForId( inContainer.getId() );
         return theContainer != null ?

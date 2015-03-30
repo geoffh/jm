@@ -111,7 +111,7 @@ public class FileBackend implements Backend {
             throw new LibraryException( theException );
         }
     }
-    
+
     @Override
     public InputStream getTrackInputStream( String inTrackUri, ProgressListener inListener )
         throws LibraryException {

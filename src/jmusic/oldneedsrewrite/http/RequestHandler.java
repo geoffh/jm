@@ -7,6 +7,8 @@ import java.io.OutputStreamWriter;
 import java.net.URLDecoder;
 import java.util.Locale;
 import java.util.logging.Logger;
+
+import jmusic.mp3encode.FileMP3Encoder;
 import org.apache.http.HttpException;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
@@ -15,6 +17,7 @@ import org.apache.http.MethodNotSupportedException;
 import org.apache.http.entity.ContentProducer;
 import org.apache.http.entity.EntityTemplate;
 import org.apache.http.entity.FileEntity;
+import org.apache.http.entity.InputStreamEntity;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.protocol.HttpRequestHandler;
 
@@ -36,14 +39,14 @@ class RequestHandler implements HttpRequestHandler {
                         HttpContext  inContext )
         throws HttpException, IOException {
         ensureMethodSupported( inRequest );
-        File theFile =
-            new File( URLDecoder.decode( inRequest.getRequestLine().getUri() ) );
-        if ( !theFile.exists() ) {
+        String theUri = URLDecoder.decode( inRequest.getRequestLine().getUri() );
+        File theFile = new File( theUri );
+        if ( ! theFile.exists() ) {
             sendNotFound( inResponse );
         } else if (!theFile.canRead() || theFile.isDirectory()) {
             sendAccessDenied( inResponse );
         } else {
-            sendFile( inResponse, theFile );
+            sendFile( inResponse, theUri );
         }
     }
     
@@ -82,6 +85,12 @@ class RequestHandler implements HttpRequestHandler {
     private void sendFile( HttpResponse inResponse, File inFile ) {
         inResponse.setStatusCode( HttpStatus.SC_OK );
         inResponse.setEntity( new FileEntity( inFile, "audio/mpeg" ) );
+    }
+
+    private void sendFile( HttpResponse inResponse, String inUri ) throws IOException {
+        inResponse.setStatusCode( HttpStatus.SC_OK );
+        FileMP3Encoder theEncoder = new FileMP3Encoder();
+        inResponse.setEntity( new InputStreamEntity( theEncoder.getInputStream( inUri ), theEncoder.getContentLength( inUri ) ) );
     }
 
     private void sendNotFound( HttpResponse inResponse ) {

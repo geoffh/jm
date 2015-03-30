@@ -12,10 +12,10 @@ public interface Backend {
     // writes mp3 tags to tracks
     public void fixTrack( String inTrackUri, LibraryItem inProps )
         throws LibraryException;
-    
+
     public InputStream getTrackInputStream( String inTrackUri, ProgressListener inListener )
         throws LibraryException;
-    
+
     public LibraryItem getTrack( String inTrackUri )
         throws LibraryException;
     
