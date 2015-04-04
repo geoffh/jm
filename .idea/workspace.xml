@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5259eab5-91e4-479e-9e32-e6dd7926b29f" name="Default" comment="" />
+    <list default="true" id="5259eab5-91e4-479e-9e32-e6dd7926b29f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/library/backend/cd/CDBackend.java" afterPath="$PROJECT_DIR$/src/jmusic/library/backend/cd/CDBackend.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/util/Config.java" afterPath="$PROJECT_DIR$/src/jmusic/util/Config.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/library/backend/file/FileBackend.java" afterPath="$PROJECT_DIR$/src/jmusic/library/backend/file/FileBackend.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/mp3encode/FileMP3Encoder.java" afterPath="$PROJECT_DIR$/src/jmusic/mp3encode/FileMP3Encoder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/upnp/mediarenderercontrolpoint/GetVolumeDBRange.java" afterPath="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/upnp/mediarenderercontrolpoint/GetVolumeDBRange.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/ui/JMusic.java" afterPath="$PROJECT_DIR$/src/jmusic/ui/JMusic.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/ui/JMusicController.java" afterPath="$PROJECT_DIR$/src/jmusic/ui/JMusicController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/util/JMusicProcess.java" afterPath="$PROJECT_DIR$/src/jmusic/util/JMusicProcess.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/library/Library.java" afterPath="$PROJECT_DIR$/src/jmusic/library/Library.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/library/LibraryException.java" afterPath="$PROJECT_DIR$/src/jmusic/library/LibraryException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/util/Logging.java" afterPath="$PROJECT_DIR$/src/jmusic/util/Logging.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/mp3encode/MP3Encoder.java" afterPath="$PROJECT_DIR$/src/jmusic/mp3encode/MP3Encoder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/library/persistence/PersistentAlbum.java" afterPath="$PROJECT_DIR$/src/jmusic/library/persistence/PersistentAlbum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/library/persistence/PersistentCDRoot.java" afterPath="$PROJECT_DIR$/src/jmusic/library/persistence/PersistentCDRoot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/library/persistence/PersistentObject.java" afterPath="$PROJECT_DIR$/src/jmusic/library/persistence/PersistentObject.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/library/persistence/PersistentPlaylistsRoot.java" afterPath="$PROJECT_DIR$/src/jmusic/library/persistence/PersistentPlaylistsRoot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/player/Player.java" afterPath="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/player/Player.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/http/RequestHandler.java" afterPath="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/http/RequestHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/http/RequestListener.java" afterPath="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/http/RequestListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/http/RequestWorkerThread.java" afterPath="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/http/RequestWorkerThread.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/ui/SettingsMusicSourcesHandler.java" afterPath="$PROJECT_DIR$/src/jmusic/ui/SettingsMusicSourcesHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/ui/TrackEditModel.java" afterPath="$PROJECT_DIR$/src/jmusic/ui/TrackEditModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/ui/TrackUpdateService.java" afterPath="$PROJECT_DIR$/src/jmusic/ui/TrackUpdateService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/ui/TrackView.java" afterPath="$PROJECT_DIR$/src/jmusic/ui/TrackView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/ui/TrackViewController.java" afterPath="$PROJECT_DIR$/src/jmusic/ui/TrackViewController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/device/upnp/localdevice/UPNPLocalDeviceUtils.java" afterPath="$PROJECT_DIR$/src/jmusic/device/upnp/localdevice/UPNPLocalDeviceUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/device/upnp/discovery/UPNPMediaDeviceDiscoverer.java" afterPath="$PROJECT_DIR$/src/jmusic/device/upnp/discovery/UPNPMediaDeviceDiscoverer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/upnp/mediarenderercontrolpoint/UPNPMediaRendererDeviceRemoteControl.java" afterPath="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/upnp/mediarenderercontrolpoint/UPNPMediaRendererDeviceRemoteControl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/device/upnp/UPNPService.java" afterPath="$PROJECT_DIR$/src/jmusic/device/upnp/UPNPService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="jmusic.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -24,18 +55,7 @@
     <favorites_list name="jmusic" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="CDBackend.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/jmusic/library/backend/cd/CDBackend.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1560" max-vertical-offset="2895">
-              <caret line="128" column="61" selection-start-line="128" selection-start-column="61" selection-end-line="128" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,14 +67,11 @@
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/scripts/listClasses" />
         <option value="$PROJECT_DIR$/src/jmusic/device/MediaDeviceManager.java" />
-        <option value="$PROJECT_DIR$/src/jmusic/library/backend/cd/CDBackend.java" />
         <option value="$PROJECT_DIR$/src/jmusic/library/backend/file/FileBackend.java" />
         <option value="$PROJECT_DIR$/src/jmusic/library/Library.java" />
         <option value="$PROJECT_DIR$/src/jmusic/library/LibraryItem.java" />
         <option value="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/upnp/mediarenderercontrolpoint/GetVolumeDBRange.java" />
         <option value="$PROJECT_DIR$/src/jmusic/device/upnp/UPNPUtils.java" />
-        <option value="$PROJECT_DIR$/src/jmusic/device/upnp/UPNPService.java" />
-        <option value="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/upnp/mediarenderercontrolpoint/UPNPMediaRendererDeviceRemoteControl.java" />
         <option value="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/upnp/mediarenderercontrolpoint/SetVolumeDB.java" />
         <option value="$PROJECT_DIR$/src/jmusic/ui/AddPlaylistController.java" />
         <option value="$PROJECT_DIR$/src/build.xml" />
@@ -62,18 +79,34 @@
         <option value="$PROJECT_DIR$/src/jmusic/library/persistence/PersistentBrowsable.java" />
         <option value="$PROJECT_DIR$/src/jmusic/ui/ContainerViewController.java" />
         <option value="$PROJECT_DIR$/src/jmusic/cdpoll/macos/CDPoll.java" />
-        <option value="$PROJECT_DIR$/src/jmusic/ui/JMusicController.java" />
-        <option value="$PROJECT_DIR$/src/jmusic/util/JMusicProcess.java" />
         <option value="$PROJECT_DIR$/src/jmusic/ui/TrackEditController.java" />
+        <option value="$PROJECT_DIR$/src/jmusic/library/LibraryException.java" />
+        <option value="$PROJECT_DIR$/src/jmusic/device/upnp/UPNPService.java" />
+        <option value="$PROJECT_DIR$/src/jmusic/device/upnp/discovery/UPNPMediaDeviceDiscoverer.java" />
+        <option value="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/http/RequestListener.java" />
+        <option value="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/upnp/mediarenderercontrolpoint/UPNPMediaRendererDeviceRemoteControl.java" />
         <option value="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/player/Player.java" />
+        <option value="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/http/RequestWorkerThread.java" />
+        <option value="$PROJECT_DIR$/src/jmusic/util/JMusicProcess.java" />
+        <option value="$PROJECT_DIR$/src/jmusic/device/upnp/localdevice/UPNPLocalDeviceUtils.java" />
+        <option value="$PROJECT_DIR$/src/jmusic/ui/JMusicController.java" />
+        <option value="$PROJECT_DIR$/src/jmusic/ui/JMusic.java" />
+        <option value="$PROJECT_DIR$/src/jmusic/mp3encode/MP3Encoder.java" />
+        <option value="$PROJECT_DIR$/src/jmusic/mp3encode/FileMP3Encoder.java" />
+        <option value="$PROJECT_DIR$/src/jmusic/oldneedsrewrite/http/RequestHandler.java" />
+        <option value="$PROJECT_DIR$/src/jmusic/ui/TrackViewModel.java" />
+        <option value="$PROJECT_DIR$/src/jmusic/library/backend/cd/CDBackend.java" />
+        <option value="$PROJECT_DIR$/src/jmusic/ui/TrackViewController.java" />
+        <option value="$PROJECT_DIR$/src/jmusic/library/persistence/PersistentCDRoot.java" />
+        <option value="$PROJECT_DIR$/src/jmusic/library/persistence/PersistentPlaylistsRoot.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="54" />
-    <option name="y" value="23" />
+    <option name="x" value="35" />
+    <option name="y" value="37" />
     <option name="width" value="1214" />
-    <option name="height" value="695" />
+    <option name="height" value="718" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -98,6 +131,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -160,33 +194,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="backend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jmusic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jmusic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jmusic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="backend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cd" />
+              <option name="myItemId" value="persistence" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -212,7 +220,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -292,19 +299,6 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -331,6 +325,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -418,6 +425,9 @@
   <component name="StructureViewFactory">
     <option name="ACTIVE_ACTIONS" value=",ALPHA_COMPARATOR" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="5259eab5-91e4-479e-9e32-e6dd7926b29f" name="Default" comment="" />
@@ -455,34 +465,34 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="23" width="1214" height="695" extended-state="0" />
+    <frame x="35" y="37" width="1214" height="718" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32928944" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38333333" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928944" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3986135" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3032929" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32833335" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.498708" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928944" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928944" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.501292" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.50341684" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.498708" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928944" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.49658313" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3986135" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26833335" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928944" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -506,10 +516,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/jmusic/device/upnp/UPNPService.java</url>
+          <line>15</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="7" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -525,154 +543,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/jmusic/library/backend/cd/CDBackend.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2895">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/oldneedsrewrite/upnp/mediarenderercontrolpoint/GetVolumeDBRange.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="735">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/oldneedsrewrite/upnp/mediarenderercontrolpoint/UPNPMediaRendererDeviceRemoteControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3405">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/device/MediaDeviceManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="436" max-vertical-offset="1920">
-          <caret line="46" column="70" selection-start-line="46" selection-start-column="65" selection-end-line="46" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/device/upnp/discovery/UPNPMediaRendererDevice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="210">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/device/upnp/discovery/UPNPMediaDeviceDiscoverer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1250" max-vertical-offset="2085">
-          <caret line="106" column="16" selection-start-line="106" selection-start-column="16" selection-end-line="106" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/device/upnp/discovery/UPNPMediaDevice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="450">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/ui/PlayController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3882" max-vertical-offset="4620">
-          <caret line="277" column="73" selection-start-line="277" selection-start-column="73" selection-end-line="277" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/oldneedsrewrite/upnp/mediarendererservice/UPNPMediaRendererNoMediaPresent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6010929" vertical-offset="0" max-vertical-offset="549">
-          <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/listClasses">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
-          <caret line="17" column="45" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/oldneedsrewrite/upnp/mediarenderercontrolpoint/GetTranspInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1253482" vertical-offset="0" max-vertical-offset="630">
-          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/util/ProgressListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1253482" vertical-offset="0" max-vertical-offset="359">
-          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37604457" vertical-offset="0" max-vertical-offset="359">
-          <caret line="9" column="48" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jmusic.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/library/backend/file/FileBackend.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5060" max-vertical-offset="5490">
-          <caret line="382" column="32" selection-start-line="382" selection-start-column="32" selection-end-line="382" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/library/Library.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28901735" vertical-offset="6965" max-vertical-offset="11325">
-          <caret line="514" column="13" selection-start-line="514" selection-start-column="13" selection-end-line="514" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/library/LibraryItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3060">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="e#872#873#0" expanded="false" />
-            <element signature="e#902#903#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/cling.jar!/org/teleal/cling/model/types/UnsignedIntegerFourBytes.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.2" vertical-offset="0" max-vertical-offset="345">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home/javafx-src.zip!/javafx/animation/Animation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="15570">
-          <caret line="177" column="0" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/cling.jar!/org/teleal/cling/model/action/ActionInvocation.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.6" vertical-offset="65" max-vertical-offset="2115">
-          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/jmusic/device/MediaRendererDevice.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.05464481" vertical-offset="0" max-vertical-offset="549">
@@ -687,24 +557,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/device/MediaDeviceManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="436" max-vertical-offset="1920">
-          <caret line="46" column="70" selection-start-line="46" selection-start-column="65" selection-end-line="46" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/jmusic/device/upnp/discovery/UPNPMediaDevice.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
           <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/device/upnp/discovery/UPNPMediaDeviceDiscoverer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1250" max-vertical-offset="2085">
-          <caret line="106" column="16" selection-start-line="106" selection-start-column="16" selection-end-line="106" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -737,20 +593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/oldneedsrewrite/upnp/mediarenderercontrolpoint/UPNPMediaRendererDeviceRemoteControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1977612" vertical-offset="2174" max-vertical-offset="3330">
-          <caret line="181" column="0" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/oldneedsrewrite/upnp/mediarenderercontrolpoint/GetVolumeDBRange.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1977612" vertical-offset="74" max-vertical-offset="705">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/jmusic/ui/AddPlaylistController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16393442" vertical-offset="0" max-vertical-offset="570">
@@ -765,33 +607,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/device/upnp/UPNPService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57377046" vertical-offset="0" max-vertical-offset="549">
-          <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/jmusic/ui/PlayController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.1965318" vertical-offset="2495" max-vertical-offset="4560">
           <caret line="233" column="5" selection-start-line="233" selection-start-column="5" selection-end-line="233" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/library/persistence/PersistentBrowsable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="335" max-vertical-offset="960">
-          <caret line="45" column="54" selection-start-line="45" selection-start-column="54" selection-end-line="45" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/library/persistence/PersistentPlaylistsRoot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37325907" vertical-offset="31" max-vertical-offset="435">
-          <caret line="16" column="58" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -818,13 +637,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/jmusic/util/JMusicProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72677594" vertical-offset="831" max-vertical-offset="1380">
-          <caret line="91" column="86" selection-start-line="91" selection-start-column="86" selection-end-line="91" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/jmusic/ui/TrackEditController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32649255" vertical-offset="3530" max-vertical-offset="4455">
@@ -833,26 +645,307 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/library/LibraryException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3291536" vertical-offset="0" max-vertical-offset="390">
+          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/ui/TrackImportService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3322884" vertical-offset="299" max-vertical-offset="750">
+          <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/oldneedsrewrite/upnp/mediarenderercontrolpoint/GetMedInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23510972" vertical-offset="0" max-vertical-offset="540">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/library/backend/file/FileBackend.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="5880">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/oldneedsrewrite/upnp/mediarenderercontrolpoint/GetVolumeDBRange.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3291536" vertical-offset="0" max-vertical-offset="855">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/ui/JMusic.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3300">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/device/MediaDeviceManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19307832" vertical-offset="44" max-vertical-offset="1920">
+          <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/ui/AddPlaylist.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05597015" vertical-offset="0" max-vertical-offset="795">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/device/upnp/UPNPService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/util/JMusicProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47949526" vertical-offset="808" max-vertical-offset="1410">
+          <caret line="73" column="38" selection-start-line="73" selection-start-column="38" selection-end-line="73" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/device/upnp/discovery/UPNPMediaDeviceDiscoverer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54605263" vertical-offset="1739" max-vertical-offset="2130">
+          <caret line="142" column="27" selection-start-line="142" selection-start-column="27" selection-end-line="142" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/oldneedsrewrite/upnp/mediarenderercontrolpoint/UPNPMediaRendererDeviceRemoteControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23343849" vertical-offset="2461" max-vertical-offset="3375">
+          <caret line="200" column="48" selection-start-line="200" selection-start-column="48" selection-end-line="200" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/jmusic/oldneedsrewrite/player/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48998177" vertical-offset="1051" max-vertical-offset="1680">
-          <caret line="100" column="74" selection-start-line="100" selection-start-column="74" selection-end-line="100" selection-end-column="74" />
+        <state vertical-scroll-proportion="0.80126184" vertical-offset="946" max-vertical-offset="1710">
+          <caret line="92" column="26" selection-start-line="92" selection-start-column="26" selection-end-line="92" selection-end-column="26" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/oldneedsrewrite/http/RequestWorkerThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.56782335" vertical-offset="0" max-vertical-offset="615">
+          <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/oldneedsrewrite/http/RequestListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3753943" vertical-offset="1201" max-vertical-offset="2280">
+          <caret line="107" column="27" selection-start-line="107" selection-start-column="27" selection-end-line="107" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/device/upnp/localdevice/UPNPLocalDeviceUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6743421" vertical-offset="890" max-vertical-offset="1500">
+          <caret line="92" column="37" selection-start-line="92" selection-start-column="37" selection-end-line="92" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home/src.zip!/java/net/PlainSocketImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19889502" vertical-offset="873" max-vertical-offset="1290">
+          <caret line="95" column="16" selection-start-line="95" selection-start-column="16" selection-end-line="95" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/ui/JMusic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6" max-vertical-offset="555">
+          <caret line="37" column="33" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
+          <folding>
+            <element signature="e#1289#1290#0" expanded="false" />
+            <element signature="e#1337#1338#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/jmusic/ui/JMusicController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18656716" vertical-offset="4295" max-vertical-offset="8850">
-          <caret line="336" column="28" selection-start-line="336" selection-start-column="28" selection-end-line="336" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="4880" max-vertical-offset="9435">
+          <caret line="357" column="20" selection-start-line="357" selection-start-column="20" selection-end-line="357" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/mp3encode/MP3Encoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
+          <caret line="8" column="80" selection-start-line="8" selection-start-column="80" selection-end-line="8" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/mp3encode/FileMP3Encoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
+          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/oldneedsrewrite/http/RequestHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="929" max-vertical-offset="1275">
+          <caret line="91" column="56" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/ui/TrackViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34920636" vertical-offset="835" max-vertical-offset="1215">
+          <caret line="69" column="6" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/ui/TrackViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30132452" vertical-offset="359" max-vertical-offset="3045">
+          <caret line="40" column="56" selection-start-line="40" selection-start-column="56" selection-end-line="40" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/ui/TrackView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35099337" vertical-offset="44" max-vertical-offset="1935">
+          <caret line="26" column="7" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/util/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3100304" vertical-offset="33" max-vertical-offset="2310">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/jmusic/library/backend/cd/CDBackend.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1560" max-vertical-offset="2895">
-          <caret line="128" column="61" selection-start-line="128" selection-start-column="61" selection-end-line="128" selection-end-column="61" />
+        <state vertical-scroll-proportion="0.4012158" vertical-offset="2088" max-vertical-offset="3465">
+          <caret line="150" column="37" selection-start-line="150" selection-start-column="37" selection-end-line="150" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4078#4079#0" expanded="true" />
+            <element signature="e#4106#4107#0" expanded="true" />
+            <element signature="e#6024#6025#0" expanded="true" />
+            <element signature="e#6082#6083#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/library/persistence/PersistentAlbum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1449016" vertical-offset="504" max-vertical-offset="1095">
+          <caret line="51" column="23" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/library/persistence/PersistentArtist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.07334526" vertical-offset="401" max-vertical-offset="960">
+          <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/library/persistence/PersistentBrowsable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3291592" vertical-offset="401" max-vertical-offset="960">
+          <caret line="45" column="54" selection-start-line="45" selection-start-column="54" selection-end-line="45" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/library/persistence/PersistentContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.8618881" vertical-offset="673" max-vertical-offset="1245">
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/library/persistence/PersistentCDRoot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5244755" vertical-offset="0" max-vertical-offset="572">
+          <caret line="26" column="39" selection-start-line="22" selection-start-column="12" selection-end-line="26" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/library/persistence/PersistentObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.94055945" vertical-offset="703" max-vertical-offset="1275">
+          <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/library/persistence/PersistentPlaylist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.12701252" vertical-offset="206" max-vertical-offset="765">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/library/persistence/PersistentPlaylistsRoot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.052447554" vertical-offset="0" max-vertical-offset="585">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/library/persistence/PersistentRoot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.7832168" vertical-offset="688" max-vertical-offset="1260">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jmusic/library/persistence/PersistentTrack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.9632868" vertical-offset="1348" max-vertical-offset="1920">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
           <folding />
         </state>
       </provider>

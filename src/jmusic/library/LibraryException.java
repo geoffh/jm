@@ -5,7 +5,7 @@ public class LibraryException extends Exception {
         NoTag,
         UnsupportedOperation,
         Unknown
-    };
+    }
     
     private ErrorCode mErrorCode;
     

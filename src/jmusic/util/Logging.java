@@ -1,8 +1,6 @@
 package jmusic.util;
 
-import java.util.Enumeration;
 import java.util.logging.LogManager;
-import java.util.logging.Logger;
 
 public class Logging implements ConfigListener {
     private static final Logging sInstance = new Logging();

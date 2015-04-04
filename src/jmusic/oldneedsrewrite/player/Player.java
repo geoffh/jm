@@ -90,6 +90,8 @@ public class Player {
             mPlayer =
                 new AdvancedPlayer(
                     new ProgressInputStream( inStream, inLength, inListener ) );
+            setName( "PlayThread" );
+            setDaemon( true );
         }
 
         @Override

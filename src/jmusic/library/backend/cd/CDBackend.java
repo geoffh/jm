@@ -3,7 +3,6 @@ package jmusic.library.backend.cd;
 import jmusic.cdpoll.CDPoll;
 import jmusic.cdpoll.CDPollFactory;
 import jmusic.cdpoll.CDPollListener;
-import jmusic.library.Library;
 import jmusic.library.LibraryException;
 import jmusic.library.LibraryItem;
 import jmusic.library.backend.Backend;
@@ -24,6 +23,7 @@ import java.util.logging.Logger;
 
 public class CDBackend implements Backend, CDPollListener {
     public static final String sUriScheme = "cd";
+    private static final String sTocFile = ".TOC.plist";
 
     private final Object mLock = new Object();
     private String mRootUri;
@@ -60,7 +60,11 @@ public class CDBackend implements Backend, CDPollListener {
     }
 
     public InputStream getTrackInputStream( String inTrackUri, ProgressListener inListener ) {
+        // Todo: Test the change below
+        //       Remove FFMPegProgress class
         try {
+            //return new FileMP3Encoder().getInputStream( cdUriToFileUri( inTrackUri ), inListener );
+
             File theFile = cdUriToFile( inTrackUri );
             String theCommand[] = { "/usr/bin/ffmpeg", "-i", theFile.getAbsolutePath(), "-f", "mp3", "-" };
             JMusicProcess theProcess = new JMusicProcess();
@@ -123,6 +127,9 @@ public class CDBackend implements Backend, CDPollListener {
                 try {
                     File theRoot = cdUriToFile( mRootUri );
                     for ( File theFile : theRoot.listFiles() ) {
+                        if ( isTOC( theFile ) ) {
+                            continue;
+                        }
                         LibraryItem theTrack = getTrack( theFile );
                         theTracks.put( theTrack.getUri(), theTrack );
                     }
@@ -141,8 +148,11 @@ public class CDBackend implements Backend, CDPollListener {
     }
 
     private File cdUriToFile( String inUri ) throws URISyntaxException {
-        String theUri = FileBackend.sUriScheme + inUri.substring( sUriScheme.length() );
-        return new File( new URI( theUri.replace( " ", "%20" ) ).getPath() );
+        return new File( new URI( cdUriToFileUri( inUri ).replace( " ", "%20" ) ).getPath() );
+    }
+
+    private String cdUriToFileUri( String inUri ) {
+        return FileBackend.sUriScheme + inUri.substring( sUriScheme.length() );
     }
 
     private String fileToCDUri( File inFile ) {
@@ -155,6 +165,10 @@ public class CDBackend implements Backend, CDPollListener {
         theItem.setLastModified( inFile.lastModified() );
         theItem.setUri( fileToCDUri( inFile ) );
         return theItem;
+    }
+
+    private boolean isTOC( File inFile ) {
+        return sTocFile.equals( inFile.getName() );
     }
 
     private void throwUnsupported( String inMessage ) throws LibraryException {
@@ -170,6 +184,8 @@ public class CDBackend implements Backend, CDPollListener {
         FFMPegProgress( JMusicProcess inProcess, ProgressListener inListener ) {
             mProcess = inProcess;
             mListener = inListener;
+            setName( "FFMPegProgress" );
+            setDaemon( true );
         }
 
         @Override

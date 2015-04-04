@@ -140,6 +140,7 @@ public class UPNPMediaDeviceDiscoverer implements MediaDeviceDiscoverer, Registr
 
         DiscoveryThread( RegistryListener inListener ) {
             mRegistryListener = inListener;
+            setDaemon( true );
         }
 
         public void run() {

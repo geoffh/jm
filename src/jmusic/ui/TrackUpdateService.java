@@ -6,7 +6,6 @@ import jmusic.library.Library;
 import jmusic.library.LibraryItem;
 import jmusic.util.ProgressListener;
 
-import java.util.HashSet;
 import java.util.Map;
 
 class TrackUpdateService extends Service< Void > {

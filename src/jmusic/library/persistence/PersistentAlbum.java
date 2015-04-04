@@ -3,7 +3,6 @@ package jmusic.library.persistence;
 import jmusic.library.LibraryItem;
 
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;

@@ -191,6 +191,7 @@ public class TrackViewController implements LibraryListener, ChangeListener< Tre
         boolean shouldBeInModel = false;
         switch( mSelectedContainer.getType() ) {
             case root:
+            case cdroot:
                 shouldBeInModel = inTrack.getRootId().equals( mSelectedContainer.getId() );
                 break;
             case artist:

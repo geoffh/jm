@@ -197,6 +197,11 @@ public class UPNPMediaRendererDeviceRemoteControl implements MediaRendererDevice
         private boolean shouldRun = true;
         private final Object mLock = new Object();
 
+        ProgressListenerThread() {
+            setName( "ProgressListenerThread" );
+            setDaemon( true );
+        }
+
         @Override
         public void run() {
             while ( shouldRun() ) {

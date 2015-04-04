@@ -71,6 +71,8 @@ public class JMusicProcess {
         StreamReader( BufferedReader inReader, boolean inIsStdOut ) {
             mReader = inReader;
             mIsStdOut = inIsStdOut;
+            setName( "StreamReader" );
+            setDaemon( true );
         }
 
         @Override

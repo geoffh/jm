@@ -105,6 +105,7 @@ public class RequestListener {
         RequestListenerThread( RequestHandlerRegistry inRegistry ) throws Exception {
             mLogger.finest( "Creating new RequestListenerThread" );
             setName( "RequestListenerThread" );
+            setDaemon( true );
             mParams
                 .setIntParameter(CoreConnectionPNames.SO_TIMEOUT, 5000)
                 .setIntParameter(CoreConnectionPNames.SOCKET_BUFFER_SIZE, 8 * 1024)

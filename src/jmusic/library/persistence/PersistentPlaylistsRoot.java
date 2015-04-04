@@ -6,6 +6,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 @Entity
 @DiscriminatorValue( "playlistsroot" )
@@ -19,7 +20,11 @@ public class PersistentPlaylistsRoot extends PersistentRoot {
             getEntityManager().createNamedQuery(
                 "getPlaylistsRoot", PersistentPlaylistsRoot.class );
         try {
-            return theQuery.getResultList().get( 0 );
+            List< PersistentPlaylistsRoot > theResults = theQuery.getResultList();
+            if ( theResults == null || theResults.isEmpty() ) {
+                throw new NoResultException();
+            }
+            return theResults.get( 0 );
         } catch( NoResultException theException ) {
             return null;
         }

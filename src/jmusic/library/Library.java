@@ -21,7 +21,6 @@ import jmusic.util.ConfigListener;
 import jmusic.util.JMusicExecutor;
 import jmusic.util.ProgressListener;
 
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -34,8 +33,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TimerTask;
-import java.util.logging.Level;
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 public class Library implements PersistenceListener, ConfigListener {
