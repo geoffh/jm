@@ -2,33 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5259eab5-91e4-479e-9e32-e6dd7926b29f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/jmusic/library/backend/cd/CDAccess.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/jmusic/library/backend/cd/linux/CDAccess.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/jmusic/library/backend/cd/CDAccessFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/jmusic/util/FFMpeg.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/jmusic/youtube/Youtube.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/google_api_client_1_20_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/google_api_services_youtube_v3_rev136_1_20_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/google_http_client_1_20_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/google_http_client_1_20_01.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/google_http_client_gson_1_20_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/jmusic/cdpoll/AbstractCDPoll.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/jmusic/cdpoll/CDPoll.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/jmusic/cdpoll/CDPollFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/jmusic/cdpoll/CDPollListener.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/jmusic/cdpoll/macos/CDPoll.java" afterPath="$PROJECT_DIR$/src/jmusic/library/backend/cd/macos/CDAccess.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/library/backend/cd/CDBackend.java" afterPath="$PROJECT_DIR$/src/jmusic/library/backend/cd/CDBackend.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/ui/JMusic.fxml" afterPath="$PROJECT_DIR$/src/jmusic/ui/JMusic.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/ui/JMusic.java" afterPath="$PROJECT_DIR$/src/jmusic/ui/JMusic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/ui/JMusicController.java" afterPath="$PROJECT_DIR$/src/jmusic/ui/JMusicController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/util/JMusicProcess.java" afterPath="$PROJECT_DIR$/src/jmusic/util/JMusicProcess.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/library/Library.java" afterPath="$PROJECT_DIR$/src/jmusic/library/Library.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/library/persistence/PersistentCDRoot.java" afterPath="$PROJECT_DIR$/src/jmusic/library/persistence/PersistentCDRoot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/library/persistence/PersistentPlaylistsRoot.java" afterPath="$PROJECT_DIR$/src/jmusic/library/persistence/PersistentPlaylistsRoot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jmusic/ui/TrackViewController.java" afterPath="$PROJECT_DIR$/src/jmusic/ui/TrackViewController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jmusic.iml" afterPath="$PROJECT_DIR$/jmusic.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="jmusic.iws" />
@@ -475,7 +448,13 @@
       <option name="project" value="LOCAL" />
       <updated>1427748801745</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary=".">
+      <created>1446592627244</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1446592627244</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -500,7 +479,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="72" width="1547" height="848" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -512,6 +491,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32947233" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32797858" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928944" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2511659" sideWeight="0.4721689" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -523,7 +503,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32797858" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32797858" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
