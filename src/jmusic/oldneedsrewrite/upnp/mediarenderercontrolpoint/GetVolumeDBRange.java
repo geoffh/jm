@@ -5,7 +5,6 @@ import org.teleal.cling.controlpoint.ActionCallback;
 import org.teleal.cling.model.action.ActionException;
 import org.teleal.cling.model.action.ActionInvocation;
 import org.teleal.cling.model.message.UpnpResponse;
-import org.teleal.cling.model.meta.Action;
 import org.teleal.cling.model.meta.Service;
 import org.teleal.cling.model.types.ErrorCode;
 import org.teleal.cling.model.types.UnsignedIntegerFourBytes;

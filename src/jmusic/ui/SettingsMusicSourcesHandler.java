@@ -1,7 +1,6 @@
 package jmusic.ui;
 
 import javafx.beans.binding.DoubleBinding;
-import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -25,7 +24,6 @@ import jmusic.util.Config;
 import jmusic.util.ConfigConstants;
 import jmusic.util.ConfigConstants.RefreshChoice;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 

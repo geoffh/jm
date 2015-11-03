@@ -15,6 +15,7 @@ class RequestWorkerThread extends Thread {
                          HttpServerConnection inHttpServerConnection ) {
             super();
             setName( "RequestWorkerThread" );
+            setDaemon( true );
             mHttpService = inHttpService;
             mHttpServerConnection = inHttpServerConnection;
         }

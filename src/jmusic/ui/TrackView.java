@@ -17,9 +17,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.util.Callback;
 import javafx.util.converter.DefaultStringConverter;
-import jmusic.library.LibraryItem;
-
-import java.util.List;
 
 class TrackView implements EventHandler< TableColumn.CellEditEvent< TrackViewItem, String > > {
     static final int sColumnNumber = 0;

@@ -2,10 +2,8 @@ package jmusic.device.upnp;
 
 import org.teleal.cling.DefaultUpnpServiceConfiguration;
 import org.teleal.cling.UpnpService;
-import org.teleal.cling.UpnpServiceConfiguration;
 import org.teleal.cling.UpnpServiceImpl;
 import org.teleal.cling.model.types.ServiceType;
-import org.teleal.cling.model.types.UDAServiceType;
 
 public class UPNPService {
     private static final UPNPServiceConfiguration sServiceConfiguration = new UPNPServiceConfiguration();

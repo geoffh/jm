@@ -90,7 +90,7 @@ class RequestHandler implements HttpRequestHandler {
     private void sendFile( HttpResponse inResponse, String inUri ) throws IOException {
         inResponse.setStatusCode( HttpStatus.SC_OK );
         FileMP3Encoder theEncoder = new FileMP3Encoder();
-        inResponse.setEntity( new InputStreamEntity( theEncoder.getInputStream( inUri ), theEncoder.getContentLength( inUri ) ) );
+        inResponse.setEntity( new InputStreamEntity( theEncoder.getInputStream( inUri, null ), theEncoder.getContentLength( inUri ) ) );
     }
 
     private void sendNotFound( HttpResponse inResponse ) {

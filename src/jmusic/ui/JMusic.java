@@ -1,10 +1,12 @@
 package jmusic.ui;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import jmusic.oldneedsrewrite.http.HttpServer;
 import jmusic.library.Library;
 import jmusic.util.Logging;
@@ -34,6 +36,12 @@ public class JMusic extends Application {
         Parent theRoot = theLoader.load();
         theLoader.< JMusicController >getController().init( mLibrary );
         inPrimaryStage.setScene( new Scene( theRoot ) );
+        inPrimaryStage.setOnCloseRequest( new EventHandler< WindowEvent >() {
+            @Override
+            public void handle( WindowEvent inEvent ) {
+                System.exit( 0 );
+            }
+        } );
         inPrimaryStage.show();
     }
 }

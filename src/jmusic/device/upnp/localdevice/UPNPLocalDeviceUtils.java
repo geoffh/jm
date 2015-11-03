@@ -89,6 +89,8 @@ public class UPNPLocalDeviceUtils {
 
         EventThread( Fireable inFireable ) {
             mFireable = inFireable;
+            setDaemon( true );
+            setName( "EventThread" );
         }
 
         @Override
