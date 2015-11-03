@@ -15,6 +15,8 @@ public class JMusicProcess {
     }
 
     private Process mProcess;
+    private StreamReader mStdOutReader;
+    private StreamReader mStdErrReader;
     private Callback mCallback;
     private final Logger mLogger = Logger.getLogger( JMusicProcess.class.getName() );
 
@@ -49,18 +51,25 @@ public class JMusicProcess {
     }
 
     private void readStdErr() {
-        new StreamReader(
-            new BufferedReader( new InputStreamReader( mProcess.getErrorStream() ) ), false ).start();
+        mStdErrReader = new StreamReader(
+            new BufferedReader( new InputStreamReader( mProcess.getErrorStream() ) ), false );
+        mStdErrReader.start();
     }
 
     private void readStdOut() {
-        new StreamReader(
-            new BufferedReader( new InputStreamReader( mProcess.getInputStream() ) ), false ).start();
+        mStdOutReader = new StreamReader(
+            new BufferedReader( new InputStreamReader( mProcess.getInputStream() ) ), false );
+        mStdOutReader.start();
     }
 
     private void waitForExit() {
         try {
             mProcess.waitFor();
+            while ( mStdOutReader.isAlive() || mStdErrReader.isAlive() ) {
+                try {
+                    Thread.sleep( 500 );
+                } catch( InterruptedException theIgnore ) {}
+            }
         } catch( InterruptedException theException ) {}
     }
 

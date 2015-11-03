@@ -1,38 +1,31 @@
 package jmusic.library.backend.cd;
 
-import jmusic.cdpoll.CDPoll;
-import jmusic.cdpoll.CDPollFactory;
-import jmusic.cdpoll.CDPollListener;
-import jmusic.library.Library;
 import jmusic.library.LibraryException;
 import jmusic.library.LibraryItem;
 import jmusic.library.backend.Backend;
 import jmusic.library.backend.file.FileBackend;
-import jmusic.util.JMusicProcess;
+import jmusic.util.JMusicExecutor;
 import jmusic.util.ProgressListener;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.StringTokenizer;
+import java.util.TimerTask;
 import java.util.logging.Logger;
 
-public class CDBackend implements Backend, CDPollListener {
+public class CDBackend implements Backend {
     public static final String sUriScheme = "cd";
 
+    private final CDAccess mCDAccess = CDAccessFactory.getCDAccess();
     private final Object mLock = new Object();
     private String mRootUri;
-    private final CDPoll mCDPoll = CDPollFactory.getCDPoll();
     private final Logger mLogger = Logger.getLogger( getClass().getName() );
 
     public CDBackend() {
-        mCDPoll.addListener( this );
-        mCDPoll.poll();
+        schedulePoll( 0 );
     }
 
     @Override
@@ -41,37 +34,17 @@ public class CDBackend implements Backend, CDPollListener {
     }
 
     @Override
-    public void cdEjected() {
-        synchronized( mLock ) {
-            mRootUri = null;
-        }
-    }
-
-    @Override
-    public void cdInserted( String inUri ) {
-        synchronized( mLock ) {
-            mRootUri = inUri;
-        }
-    }
-
-    @Override
     public void fixTrack( String inTrackUri, LibraryItem inProps ) throws LibraryException {
-        throwUnsupported( "fixTrack isn't supported" );
+        throwUnsupported( "fixTrack" );
     }
 
-    public InputStream getTrackInputStream( String inTrackUri, ProgressListener inListener ) {
-        try {
-            File theFile = cdUriToFile( inTrackUri );
-            String theCommand[] = { "/usr/bin/ffmpeg", "-i", theFile.getAbsolutePath(), "-f", "mp3", "-" };
-            JMusicProcess theProcess = new JMusicProcess();
-            theProcess.execute( theCommand );
-            if ( inListener != null ) {
-                new FFMPegProgress( theProcess, inListener ).start();
+    @Override
+    public InputStream getTrackInputStream( String inTrackUri, ProgressListener inListener ) throws LibraryException {
+        synchronized( mLock ) {
+            if ( mRootUri == null ) {
+                return null;
             }
-            return theProcess.getInputStream();
-        } catch( Exception theException ) {
-            mLogger.throwing( "CDBackend", "getTrackInputStream", theException );
-            return null;
+            return mCDAccess.getTrackInputStream( cdUriToFile( inTrackUri ), inListener );
         }
     }
 
@@ -81,33 +54,27 @@ public class CDBackend implements Backend, CDPollListener {
             if ( mRootUri == null ) {
                 return null;
             }
-            try {
-                LibraryItem theTrack = getTrack( cdUriToFile( inTrackUri ) );
-                theTrack.setAlbumName( LibraryItem.sUnknown );
-                theTrack.setArtistName( LibraryItem.sUnknown );
-                String theTitle = cdUriToFile( inTrackUri ).getName();
-                if ( theTitle != null ) {
-                    int theIndex = theTitle.lastIndexOf( "." );
-                    if ( theIndex > 0 ) {
-                        theTitle = theTitle.substring( 0, theIndex );
-                    }
-                } else {
-                    theTitle = LibraryItem.sUnknown;
+            LibraryItem theTrack = getTrack( cdUriToFile( inTrackUri ) );
+            theTrack.setAlbumName( LibraryItem.sUnknown );
+            theTrack.setArtistName( LibraryItem.sUnknown );
+            String theTitle = cdUriToFile( inTrackUri ).getName();
+            if ( theTitle != null ) {
+                int theIndex = theTitle.lastIndexOf( "." );
+                if ( theIndex > 0 ) {
+                    theTitle = theTitle.substring( 0, theIndex );
                 }
-                theTrack.setTitle( theTitle );
-                theTrack.setDuration( 0 );
-                return theTrack;
-            } catch ( URISyntaxException theException ) {
-                mLogger.throwing( "CDBackend", "getTrack", theException );
-                throw new LibraryException( theException );
+            } else {
+                theTitle = LibraryItem.sUnknown;
             }
+            theTrack.setTitle( theTitle );
+            theTrack.setDuration( 0 );
+            return theTrack;
         }
     }
 
     @Override
-    public void importTrack( Backend inSourceBackend, String inSourceTrackUri, LibraryItem inTargetTrackProperties, ProgressListener inListener )
-        throws LibraryException {
-        throwUnsupported( "importTrack isn't supported" );
+    public void importTrack( Backend inSourceBackend, String inSourceTrackUri, LibraryItem inTargetTrackProperties, ProgressListener inListener ) throws LibraryException {
+        throwUnsupported( "importTrack" );
     }
 
     @Override
@@ -120,15 +87,10 @@ public class CDBackend implements Backend, CDPollListener {
         synchronized( mLock ) {
             final Map< String, LibraryItem > theTracks = new HashMap<>();
             if ( mRootUri != null ) {
-                try {
-                    File theRoot = cdUriToFile( mRootUri );
-                    for ( File theFile : theRoot.listFiles() ) {
-                        LibraryItem theTrack = getTrack( theFile );
-                        theTracks.put( theTrack.getUri(), theTrack );
-                    }
-                } catch ( URISyntaxException theException ) {
-                    mLogger.throwing( "CDBackend", "listTracks", theException );
-                    throw new LibraryException( theException );
+                File theRoot = cdUriToFile( mRootUri );
+                for ( File theFile : theRoot.listFiles() ) {
+                    LibraryItem theTrack = getTrack( theFile );
+                    theTracks.put( theTrack.getUri(), theTrack );
                 }
             }
             return theTracks;
@@ -137,12 +99,16 @@ public class CDBackend implements Backend, CDPollListener {
 
     @Override
     public void updateTrack( String inTrackUri, LibraryItem inProps ) throws LibraryException {
-        throwUnsupported( "updateTrack isn't supported" );
+        throwUnsupported( "updateTrack" );
     }
 
-    private File cdUriToFile( String inUri ) throws URISyntaxException {
+    private File cdUriToFile( String inUri ) throws LibraryException {
         String theUri = FileBackend.sUriScheme + inUri.substring( sUriScheme.length() );
-        return new File( new URI( theUri.replace( " ", "%20" ) ).getPath() );
+        try {
+            return new File( new URI( theUri.replace( " ", "%20" ) ).getPath() );
+        } catch( URISyntaxException theException ) {
+            throw new LibraryException( theException );
+        }
     }
 
     private String fileToCDUri( File inFile ) {
@@ -157,56 +123,23 @@ public class CDBackend implements Backend, CDPollListener {
         return theItem;
     }
 
-    private void throwUnsupported( String inMessage ) throws LibraryException {
-        LibraryException theException = new LibraryException( inMessage );
+    private void schedulePoll( long inDelay ) {
+        JMusicExecutor.scheduleTask( new CDPollTask(), inDelay );
+    }
+
+    private void throwUnsupported( String inOperation ) throws LibraryException {
+        LibraryException theException = new LibraryException( inOperation + " isn't supported" );
         theException.setErrorCode( LibraryException.ErrorCode.UnsupportedOperation );
         throw theException;
     }
 
-    class FFMPegProgress extends Thread {
-        private final JMusicProcess mProcess;
-        private final ProgressListener mListener;
-
-        FFMPegProgress( JMusicProcess inProcess, ProgressListener inListener ) {
-            mProcess = inProcess;
-            mListener = inListener;
-        }
-
-        @Override
+    class CDPollTask extends TimerTask {
         public void run() {
-            BufferedReader theReader = new BufferedReader( new InputStreamReader( mProcess.getErrorStream() ) );
-            String theLine;
-            try {
-                double theDuration = 0;
-                int theIndex;
-                while ( ( theLine = theReader.readLine() ) != null ) {
-                    if ( theDuration == 0 ) {
-                        theIndex = theLine.indexOf( "Duration: " );
-                        if ( theIndex != -1 ) {
-                            theDuration = stringToDuration( theLine.substring( theIndex + 10, theIndex + 21 ) );
-                        }
-                    } else {
-                        theIndex = theLine.indexOf( "time=" );
-                        if ( theIndex != -1 ) {
-                            double theTime = stringToDuration( theLine.substring( theIndex + 5, theIndex + 16 ) );
-                            mListener.onProgress( ( int )( theTime * 100 / theDuration ) );
-                        }
-                    }
-                }
-            } catch( Exception theException ) {
-                mListener.onErrorMessage( theException.getMessage() );
-            } finally {
-                mListener.onComplete();
+            String theRootPath = mCDAccess.getRootPath();
+            synchronized( mLock ) {
+                mRootUri = theRootPath != null ? sUriScheme + ":" + theRootPath : null;
             }
-        }
-
-        private double stringToDuration( String inDuration ) {
-            double theDuration = 0;
-            StringTokenizer theTokeniser = new StringTokenizer( inDuration, ":" );
-            theDuration += Integer.valueOf( theTokeniser.nextToken() ) * 60 * 60;
-            theDuration += Integer.valueOf( theTokeniser.nextToken() ) * 60;
-            theDuration += Double.valueOf( theTokeniser.nextToken() );
-            return theDuration;
+            schedulePoll( 5000 );
         }
     }
 }

@@ -21,48 +21,9 @@
 <?import javafx.scene.text.*?>
 <?scenebuilder-background-color 0xdfdfdfff?>
 
-<AnchorPane id="root" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="393.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="jmusic.ui.JMusicController">
+<AnchorPane id="root" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="393.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jmusic.ui.JMusicController">
   <children>
-    <MenuBar layoutX="293.0" layoutY="167.0" maxHeight="-1.0" minHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" useSystemMenuBar="true">
-      <menus>
-        <Menu mnemonicParsing="false" onShowing="#onFileMenuShowing" text="File">
-          <items>
-            <Menu mnemonicParsing="false" text="New" fx:id="menuItemFileNew">
-              <items>
-                <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Music Source ..." fx:id="menuItemFileNewRoot" />
-                <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Playlist ..." fx:id="menuItemFileNewPlaylist" />
-              </items>
-            </Menu>
-            <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Refresh" fx:id="menuItemFileRefresh" />
-            <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Broken Tracks ..." fx:id="menuItemFileBrokenTracks" />
-            <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Unknown Tracks ..." fx:id="menuItemFileUnknownTracks" />
-            <MenuItem id="menuItemFileSettings" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Settings ..." fx:id="menuItemFileSettings" />
-            <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Close" fx:id="menuItemFileClose">
-              <accelerator>
-                <KeyCodeCombination alt="UP" code="Q" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
-              </accelerator>
-            </MenuItem>
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" onShowing="#onEditMenuShowing" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Edit ..." fx:id="menuItemEditEdit" />
-            <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Copy" fx:id="menuItemEditCopy">
-              <accelerator>
-                <KeyCodeCombination alt="UP" code="C" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
-              </accelerator>
-            </MenuItem>
-            <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Paste" fx:id="menuItemEditPaste">
-              <accelerator>
-                <KeyCodeCombination alt="UP" code="V" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
-              </accelerator>
-            </MenuItem>
-            <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Remove ..." fx:id="menuItemEditRemove" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
-    <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
       <children>
         <HBox maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="-1.0" style="-fx-background-color: #f6f6f6" VBox.vgrow="ALWAYS">
           <children>
@@ -175,16 +136,16 @@
                       <items>
                         <Menu mnemonicParsing="false" text="New">
                           <items>
-                            <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Music Source ..." fx:id="menuItemContainerContextNewRoot" />
-                            <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Playlist ..." fx:id="menuItemContainerContextNewPlaylist" />
+                            <MenuItem fx:id="menuItemContainerContextNewRoot" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Music Source ..." />
+                            <MenuItem fx:id="menuItemContainerContextNewPlaylist" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Playlist ..." />
                           </items>
                         </Menu>
-                        <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Refresh" fx:id="menuItemContainerContextRefresh" />
-                        <MenuItem id="menuItemContainerContextBrokenTracks" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Broken Tracks ..." fx:id="menuItemContainerContextBrokenTracks" />
-                        <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Unknown Tracks ..." fx:id="menuItemContainerContextUnknownTracks" />
-                        <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Copy" fx:id="menuItemContainerContextCopy" />
-                        <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Paste" fx:id="menuItemContainerContextPaste" />
-                        <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Remove ..." fx:id="menuItemContainerContextRemove" />
+                        <MenuItem fx:id="menuItemContainerContextRefresh" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Refresh" />
+                        <MenuItem id="menuItemContainerContextBrokenTracks" fx:id="menuItemContainerContextBrokenTracks" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Broken Tracks ..." />
+                        <MenuItem fx:id="menuItemContainerContextUnknownTracks" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Unknown Tracks ..." />
+                        <MenuItem fx:id="menuItemContainerContextCopy" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Copy" />
+                        <MenuItem fx:id="menuItemContainerContextPaste" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Paste" />
+                        <MenuItem fx:id="menuItemContainerContextRemove" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Remove ..." />
                       </items>
                     </ContextMenu>
                   </contextMenu>
@@ -197,9 +158,9 @@
                   <contextMenu>
                     <ContextMenu onShowing="#onTrackViewContextMenuShowing">
                       <items>
-                        <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Edit ..." fx:id="menuItemTrackContextEdit" />
-                        <MenuItem mnemonicParsing="false" onAction="#onMenuItemPressed" text="Copy" fx:id="menuItemTrackContextCopy" />
-                        <MenuItem id="menuItemTrackContextRemove" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Remove ..." fx:id="menuItemTrackContextRemove" />
+                        <MenuItem fx:id="menuItemTrackContextEdit" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Edit ..." />
+                        <MenuItem fx:id="menuItemTrackContextCopy" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Copy" />
+                        <MenuItem id="menuItemTrackContextRemove" fx:id="menuItemTrackContextRemove" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Remove ..." />
                       </items>
                     </ContextMenu>
                   </contextMenu>
@@ -210,5 +171,44 @@
         </SplitPane>
       </children>
     </VBox>
+    <MenuBar fx:id="menuBar" maxHeight="-1.0" minHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <menus>
+        <Menu mnemonicParsing="false" onShowing="#onFileMenuShowing" text="File">
+          <items>
+            <Menu fx:id="menuItemFileNew" mnemonicParsing="false" text="New">
+              <items>
+                <MenuItem fx:id="menuItemFileNewRoot" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Music Source ..." />
+                <MenuItem fx:id="menuItemFileNewPlaylist" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Playlist ..." />
+              </items>
+            </Menu>
+            <MenuItem fx:id="menuItemFileRefresh" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Refresh" />
+            <MenuItem fx:id="menuItemFileBrokenTracks" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Broken Tracks ..." />
+            <MenuItem fx:id="menuItemFileUnknownTracks" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Unknown Tracks ..." />
+            <MenuItem id="menuItemFileSettings" fx:id="menuItemFileSettings" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Settings ..." />
+            <MenuItem fx:id="menuItemFileClose" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Close">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="Q" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" onShowing="#onEditMenuShowing" text="Edit">
+          <items>
+            <MenuItem fx:id="menuItemEditEdit" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Edit ..." />
+            <MenuItem fx:id="menuItemEditCopy" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Copy">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="C" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <MenuItem fx:id="menuItemEditPaste" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Paste">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="V" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <MenuItem fx:id="menuItemEditRemove" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Remove ..." />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
   </children>
 </AnchorPane>

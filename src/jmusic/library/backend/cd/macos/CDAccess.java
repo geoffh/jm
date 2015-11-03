@@ -1,23 +1,28 @@
-package jmusic.cdpoll.macos;
+package jmusic.library.backend.cd.macos;
 
-import jmusic.cdpoll.AbstractCDPoll;
-import jmusic.library.backend.cd.CDBackend;
-import jmusic.util.JMusicExecutor;
+import jmusic.library.LibraryException;
 import jmusic.util.JMusicProcess;
+import jmusic.util.ProgressListener;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.TimerTask;
+import java.io.InputStream;
 import java.util.logging.Logger;
 
-public class CDPoll extends AbstractCDPoll {
+public class CDAccess implements jmusic.library.backend.cd.CDAccess {
     private static final String sDISKUtil[] = { "/usr/sbin/diskutil", "info", "device" };
     private static final String sDRUtil[] = { "/usr/bin/drutil", "status" };
-    private boolean mHaveCD = false;
+
     private final Logger mLogger = Logger.getLogger( getClass().getName() );
 
     @Override
-    public void poll() {
-        schedulePoll( 0 );
+    public String getRootPath() {
+        return getMountPoint( getDevice() );
+    }
+
+    @Override
+    public InputStream getTrackInputStream( File inFile, ProgressListener inListener ) throws LibraryException {
+        return null;
     }
 
     private String getDevice() {
@@ -30,7 +35,10 @@ public class CDPoll extends AbstractCDPoll {
         return theCallback.getDevice();
     }
 
-    private String getUri( String inDevice ) {
+    private String getMountPoint( String inDevice ) {
+        if ( inDevice == null ) {
+            return null;
+        }
         DISKUtilCallback theCallback = new DISKUtilCallback();
         try {
             sDISKUtil[ 2 ] = inDevice;
@@ -38,32 +46,7 @@ public class CDPoll extends AbstractCDPoll {
         } catch( IOException theException ) {
             mLogger.throwing( "CDPoll", "getUri", theException );
         }
-        return CDBackend.sUriScheme + ":" + theCallback.getMountPoint();
-    }
-
-    private void schedulePoll( long inDelay) {
-        JMusicExecutor.scheduleTask( new PollTask(), inDelay );
-    }
-
-    class PollTask extends TimerTask {
-        public void run() {
-            String theDevice = getDevice();
-            if ( theDevice != null ) {
-                if ( ! mHaveCD ) {
-                    String theURI = getUri( theDevice );
-                    if ( theURI != null ) {
-                        mHaveCD = true;
-                        notifyCDInserted( theURI );
-                    }
-                }
-            } else {
-                if ( mHaveCD ) {
-                    mHaveCD = false;
-                    notifyCDEjected();
-                }
-            }
-            schedulePoll( 5000 );
-        }
+        return theCallback.getMountPoint();
     }
 
     class DRUtilCallback implements JMusicProcess.Callback {

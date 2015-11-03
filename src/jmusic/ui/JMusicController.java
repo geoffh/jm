@@ -61,6 +61,7 @@ public class JMusicController implements Initializable {
     @FXML private AnchorPane root;
     @FXML private TreeView< LibraryItem > containerTreeView;
     @FXML private TableView< TrackViewItem > trackTableView;
+    @FXML private MenuBar menuBar;
     @FXML private MenuItem menuItemFileNewPlaylist;
     @FXML private MenuItem menuItemFileNewRoot;
     @FXML private MenuItem menuItemFileRefresh;
@@ -305,6 +306,7 @@ public class JMusicController implements Initializable {
         mPlayController = new PlayController( this, initPlayControls() );
         mClipboard = new Clipboard( mLibrary );
         mDragboard = new Clipboard( mLibrary );
+        menuBar.toFront();
     }
 
     PlayControls initPlayControls() {

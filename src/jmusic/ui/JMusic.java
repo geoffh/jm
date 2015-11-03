@@ -15,6 +15,10 @@ public class JMusic extends Application {
     public static void main( String[] inArgs ) {
         launch( inArgs );
     }
+
+    public JMusic() {
+        super();
+    }
     
     @Override
     public void init() {

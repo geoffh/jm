@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="google-http-client-1.20.01">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/google-http-client-1.20.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
