@@ -44,7 +44,7 @@
             <fileset dir="jmusic/resources"/>
         </copy>
         <copy todir="${theBuildFXMLDir}">
-            <fileset dir="${theSourceFXMLDir}" includes="*.fxml"/>
+            <fileset dir="${theSourceFXMLDir}" includes="**/*.fxml"/>
         </copy>
         <copy file="${theSourceManifestFile}" todir="${theBuildManifestDir}"/>
         <exec executable="${theScriptsDir}/listClasses" dir="${theScriptsDir}"/>

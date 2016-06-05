@@ -15,7 +15,7 @@ public class Clipboard implements LibraryListener {
         inLibrary.addListener( this );
     }
 
-    List< LibraryItem > getContent() { return new LinkedList<>( mItems ); }
+    public List< LibraryItem > getContent() { return new LinkedList<>( mItems ); }
 
     LibraryItem getContentItem() { return ! mItems.isEmpty() ? mItems.get( 0 ) : null; }
 
@@ -38,7 +38,7 @@ public class Clipboard implements LibraryListener {
     @Override
     public void onObjectUpdate( LibraryItem inObject ) {}
 
-    void setContent( LibraryItem inItem ) {
+    public void setContent( LibraryItem inItem ) {
         synchronized( mItems ) {
             mItems.clear();
             if ( inItem != null ) {
@@ -47,7 +47,7 @@ public class Clipboard implements LibraryListener {
         }
     }
 
-    void setContent( Collection< ? extends LibraryItem > inItems ) {
+    public void setContent( Collection< ? extends LibraryItem > inItems ) {
         synchronized( mItems ) {
             mItems.clear();
             mItems.addAll( inItems );

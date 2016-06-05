@@ -25,7 +25,7 @@ public class JMusic extends Application {
     @Override
     public void init() {
         Logging.init();
-        // Can I moved this to UPNP/ContentDirectoyService
+        // Todo: Can I move this to UPNP/ContentDirectoryService
         HttpServer.getInstance().addDocRoot( "/" );
     }
     

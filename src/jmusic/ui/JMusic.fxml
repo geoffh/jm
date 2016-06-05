@@ -21,7 +21,7 @@
 <?import javafx.scene.text.*?>
 <?scenebuilder-background-color 0xdfdfdfff?>
 
-<AnchorPane id="root" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="393.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jmusic.ui.JMusicController">
+<AnchorPane id="root" prefHeight="393.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jmusic.ui.JMusicController">
   <children>
     <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
       <children>
@@ -126,47 +126,10 @@
             <Insets />
           </VBox.margin>
         </HBox>
-        <SplitPane dividerPositions="0.2506265664160401" focusTraversable="true" prefHeight="282.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
+        <SplitPane fx:id="splitPane" dividerPositions="0.2506265664160401" focusTraversable="true" prefHeight="282.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
           <items>
-            <AnchorPane fx:id="treeViewPane" minHeight="0.0" minWidth="0.0" prefHeight="353.0" prefWidth="259.0">
-              <children>
-                <TreeView fx:id="containerTreeView" editable="true" onMouseClicked="#onContainerViewMouseClicked" prefHeight="296.0" prefWidth="176.0" showRoot="false" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
-                  <contextMenu>
-                    <ContextMenu onShowing="#onContainerViewContextMenuShowing">
-                      <items>
-                        <Menu mnemonicParsing="false" text="New">
-                          <items>
-                            <MenuItem fx:id="menuItemContainerContextNewRoot" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Music Source ..." />
-                            <MenuItem fx:id="menuItemContainerContextNewPlaylist" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Playlist ..." />
-                          </items>
-                        </Menu>
-                        <MenuItem fx:id="menuItemContainerContextRefresh" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Refresh" />
-                        <MenuItem id="menuItemContainerContextBrokenTracks" fx:id="menuItemContainerContextBrokenTracks" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Broken Tracks ..." />
-                        <MenuItem fx:id="menuItemContainerContextUnknownTracks" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Unknown Tracks ..." />
-                        <MenuItem fx:id="menuItemContainerContextCopy" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Copy" />
-                        <MenuItem fx:id="menuItemContainerContextPaste" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Paste" />
-                        <MenuItem fx:id="menuItemContainerContextRemove" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Remove ..." />
-                      </items>
-                    </ContextMenu>
-                  </contextMenu>
-                </TreeView>
-              </children>
-            </AnchorPane>
-            <AnchorPane fx:id="trackViewPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-              <children>
-                <TableView id="trackTreeView" fx:id="trackTableView" blendMode="SRC_ATOP" editable="true" onMouseClicked="#onTrackViewMouseClicked" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
-                  <contextMenu>
-                    <ContextMenu onShowing="#onTrackViewContextMenuShowing">
-                      <items>
-                        <MenuItem fx:id="menuItemTrackContextEdit" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Edit ..." />
-                        <MenuItem fx:id="menuItemTrackContextCopy" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Copy" />
-                        <MenuItem id="menuItemTrackContextRemove" fx:id="menuItemTrackContextRemove" mnemonicParsing="false" onAction="#onMenuItemPressed" text="Remove ..." />
-                      </items>
-                    </ContextMenu>
-                  </contextMenu>
-                </TableView>
-              </children>
-            </AnchorPane>
+            <AnchorPane fx:id="treeViewPane" minHeight="0.0" minWidth="0.0" prefHeight="353.0" prefWidth="259.0" />
+            <AnchorPane fx:id="trackViewPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
           </items>
         </SplitPane>
       </children>
