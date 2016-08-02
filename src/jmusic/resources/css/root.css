@@ -1,0 +1,6 @@
+@font-face {
+    src: url( '../fonts/FontAwesome.otf' );
+}
+.button {
+    -fx-font-family: "FontAwesome";
+}
