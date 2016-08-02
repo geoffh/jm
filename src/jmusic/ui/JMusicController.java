@@ -14,6 +14,7 @@ import jmusic.ui.addplaylist.AddPlaylist;
 import jmusic.ui.addroot.AddRoot;
 import jmusic.ui.edittrack.EditTrack;
 import jmusic.ui.edittrack.EditTrackController;
+import jmusic.ui.navigation.NavigationController;
 import jmusic.ui.play.PlayController;
 import jmusic.ui.play.PlayControls;
 import jmusic.ui.services.TrackImportService;
@@ -450,7 +451,7 @@ public class JMusicController implements Initializable {
     }
 
     @FXML private void onMenuItemPressed( ActionEvent inEvent ) {
-        Object theSource = ( MenuItem )inEvent.getSource();
+        Object theSource = inEvent.getSource();
         if ( menuItemFileNewRoot.equals( theSource ) ) {
             addRoot();
         } else if ( menuItemFileNewPlaylist.equals( theSource ) ) {

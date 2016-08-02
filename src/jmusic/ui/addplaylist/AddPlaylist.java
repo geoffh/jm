@@ -19,7 +19,7 @@ public class AddPlaylist {
             FXMLLoader theLoader = new FXMLLoader( AddPlaylist.class.getResource( sFXMLDocument ) );
             Parent theParent = theLoader.load();
             Stage theStage = new Stage();
-            AddPlaylistController theController = theLoader.< AddPlaylistController >getController();
+            AddPlaylistController theController = theLoader.getController();
             theController.setStage( theStage );
             theStage.setScene( new Scene( theParent ) );
             theStage.initModality( Modality.APPLICATION_MODAL );

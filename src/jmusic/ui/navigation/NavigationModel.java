@@ -1,4 +1,4 @@
-package jmusic.ui.treenavigation;
+package jmusic.ui.navigation;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,17 +8,18 @@ import jmusic.library.LibraryItem;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
-class TreeNavigationModel {
-    private final TreeNavigationController mController;
-    private TreeNavigationItem mRoot;
-    private final HashMap< Long, TreeNavigationItem > mItems = new HashMap<>();
+class NavigationModel {
+    private final NavigationController mController;
+    private NavigationItem mRoot;
+    private boolean mDisplayAlbums;
+    private final HashMap< Long, NavigationItem > mItems = new HashMap<>();
 
-    TreeNavigationModel( TreeNavigationController inController ) {
+    NavigationModel( NavigationController inController ) {
         mController = inController;
     }
 
     void addItem( LibraryItem inItem ) {
-        TreeNavigationItem theParent = findParent( inItem );
+        NavigationItem theParent = findParent( inItem );
         if ( theParent != null ) {
             theParent.addItem( createContainerViewItem( inItem ) );
         }
@@ -34,27 +35,35 @@ class TreeNavigationModel {
         return mItems.containsKey( inItem.getId() );
     }
 
-    TreeNavigationItem getData() {
+    NavigationItem getData() {
         return mRoot;
     }
 
-    TreeNavigationItem getItem( Long inId ) {
+    NavigationItem getItem( Long inId ) {
         return mItems.get( inId );
+    }
+
+    boolean isLeaf( LibraryItem inItem ) {
+        return inItem.isTrack() || inItem.isAlbum() || inItem.isPlaylist() || ( ! mDisplayAlbums && inItem.isArtist() );
     }
 
     void removeItem( LibraryItem inItem ) {
         synchronized( mItems ) {
             Long theChildId = inItem.getId();
-            TreeNavigationItem theChild = mItems.get( theChildId );
+            NavigationItem theChild = mItems.get( theChildId );
             if ( theChild == null ) {
                 return;
             }
-            TreeNavigationItem theParent = mItems.get( inItem.getParentId() );
+            NavigationItem theParent = mItems.get( inItem.getParentId() );
             if ( theParent != null ) {
                 theParent.removeItem( theChild );
             }
             mItems.remove( theChildId );
         }
+    }
+
+    void setDisplayAlbums( boolean inDisplayAlbums ) {
+        mDisplayAlbums = inDisplayAlbums;
     }
 
     void setRootItem( LibraryItem inRootItem ) {
@@ -63,7 +72,7 @@ class TreeNavigationModel {
 
     void updateItem( LibraryItem inItem ) {
         synchronized( mItems ) {
-            TreeNavigationItem theItem = mItems.get( inItem.getId() );
+            NavigationItem theItem = mItems.get( inItem.getId() );
             if ( theItem == null ) {
                 return;
             }
@@ -71,15 +80,15 @@ class TreeNavigationModel {
         }
     }
 
-    private TreeNavigationItem createContainerViewItem( LibraryItem inItem ) {
-        TreeNavigationItem theItem = new TreeNavigationItem( this, inItem );
+    private NavigationItem createContainerViewItem( LibraryItem inItem ) {
+        NavigationItem theItem = new NavigationItem( this, inItem );
         synchronized( mItems ) {
             mItems.put( inItem.getId(), theItem );
         }
         return theItem;
     }
 
-    private TreeNavigationItem findParent( LibraryItem inChildItem ) {
+    private NavigationItem findParent( LibraryItem inChildItem ) {
         return mItems.get( inChildItem.getParentId() );
     }
 }

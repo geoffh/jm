@@ -63,9 +63,7 @@ public class EditTrackView {
         TableColumn< EditTrackItem, String > theColumn = new TableColumn<>( inColumnHeaderString );
         theColumn.prefWidthProperty().bind( inWidth );
         theColumn.setCellValueFactory(
-            new Callback< TableColumn.CellDataFeatures< EditTrackItem, String >, ObservableValue< String > >() {
-                @Override
-                public ObservableValue< String > call( TableColumn.CellDataFeatures< EditTrackItem, String > inParam ) {
+                inParam -> {
                     EditTrackItem theItem = inParam.getValue();
                     ObservableValue< String > theValue = null;
                     if ( EditTrackItem.sPropertyNameAlbum.equals( inTrackPropertyName ) ) {
@@ -80,8 +78,7 @@ public class EditTrackView {
                         theValue = theItem.uriProperty();
                     }
                     return theValue;
-                }
-            } );
+                } );
         return theColumn;
     }
 }

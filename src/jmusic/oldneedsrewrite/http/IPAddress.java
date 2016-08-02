@@ -61,7 +61,7 @@ public class IPAddress {
                             while ( theAddresses.hasMoreElements() ) {
                                 InetAddress theAddress = theAddresses.nextElement();
                                 String theIPAddress = theAddress.getHostAddress();
-                                if ( theIPAddress.indexOf( "." ) != -1 &&
+                                if ( theIPAddress.contains( "." ) &&
                                     ! "127.0.0.1".equals( theIPAddress ) ) {
                                     thePreferredIPAddress = theIPAddress;
                                     break;
@@ -94,8 +94,7 @@ public class IPAddress {
                 while ( theAddresses.hasMoreElements() ) {
                     InetAddress theAddress = theAddresses.nextElement();
                     String theIPAddress = theAddress.getHostAddress();
-                    if ( theIPAddress.indexOf( "." ) != -1 &&
-                            ! "127.0.0.1".equals( theIPAddress ) ) {
+                    if ( theIPAddress.contains( "." ) && ! "127.0.0.1".equals( theIPAddress ) ) {
                         return theIPAddress;
                     }
                 }

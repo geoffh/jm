@@ -1,9 +1,9 @@
-package jmusic.ui.tablecontent;
+package jmusic.ui.content.simpletablecontent;
 
 import javafx.beans.property.SimpleStringProperty;
 import jmusic.library.LibraryItem;
 
-public class TableContentItem extends LibraryItem {
+public class SimpleTableContentItem extends LibraryItem {
     public static final String sPropertyNameNumber = "number";
     public static final String sPropertyNameAlbum  = "album";
     public static final String sPropertyNameArtist = "artist";
@@ -18,7 +18,7 @@ public class TableContentItem extends LibraryItem {
     private final SimpleStringProperty mArtist;
     private final SimpleStringProperty mTitle;
 
-    TableContentItem( LibraryItem inTrack ) {
+    SimpleTableContentItem( LibraryItem inTrack ) {
         putAll( inTrack );
         mNumber = new SimpleStringProperty( this, sPropertyNameNumber );
         int theTrackNumber = getTrackNumber();

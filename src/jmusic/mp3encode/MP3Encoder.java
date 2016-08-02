@@ -6,6 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public interface MP3Encoder {
-    public InputStream getInputStream( String inUri, ProgressListener inListener ) throws IOException;
-    public long getContentLength( String inUri );
+    InputStream getInputStream( String inUri, ProgressListener inListener ) throws IOException;
+    long getContentLength( String inUri );
 }

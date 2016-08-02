@@ -1,4 +1,4 @@
-package jmusic.ui.tablecontent;
+package jmusic.ui.content.simpletablecontent;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -24,15 +24,15 @@ import java.util.Set;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-public class TableContentController implements LibraryListener, SelectedItemListener, ContentController {
+public class SimpleTableContentController implements LibraryListener, SelectedItemListener, ContentController {
     private final JMusicController mMainController;
-    private final TableContentModel<TableContentItem> mModel = new TableContentModel<>();
-    private final TableContentView mView = new TableContentView( this );
+    private final SimpleTableContentModel<SimpleTableContentItem > mModel = new SimpleTableContentModel<>();
+    private final SimpleTableContentView mView = new SimpleTableContentView( this );
     private final Set< ContentsChangedListener > mListeners = new HashSet<>();
-    private final Logger mLogger = Logger.getLogger( TableContentController.class.getName() );
+    private final Logger mLogger = Logger.getLogger( SimpleTableContentController.class.getName() );
     private LibraryItem mSelectedContainer;
 
-    public TableContentController( JMusicController inMainController) {
+    public SimpleTableContentController( JMusicController inMainController) {
         mMainController = inMainController;
         mMainController.getLibrary().addListener( this );
         mMainController.addNavigationSelectedItemListener( this );
@@ -87,7 +87,7 @@ public class TableContentController implements LibraryListener, SelectedItemList
         if ( ! inObject.isTrack() || ! shouldTrackBeInModel( inObject ) ) {
             return;
         }
-        Platform.runLater( () -> mModel.insertTrack( new TableContentItem( inObject ) ) );
+        Platform.runLater( () -> mModel.insertTrack( new SimpleTableContentItem( inObject ) ) );
     }
 
     @Override
@@ -95,7 +95,7 @@ public class TableContentController implements LibraryListener, SelectedItemList
         if ( ! inObject.isTrack() ) {
             return;
         }
-        Platform.runLater( () -> mModel.removeTrack( new TableContentItem( inObject ) ) );
+        Platform.runLater( () -> mModel.removeTrack( new SimpleTableContentItem( inObject ) ) );
     }
 
     @Override
@@ -107,7 +107,7 @@ public class TableContentController implements LibraryListener, SelectedItemList
             return;
         }
         Platform.runLater( () -> {
-            TableContentItem theTrack = new TableContentItem( inObject );
+            SimpleTableContentItem theTrack = new SimpleTableContentItem( inObject );
             boolean shouldBeDisplayed = shouldTrackBeInModel( inObject );
             if ( mSelectedContainer.getType() == LibraryItem.Type.playlist ) {
                 boolean isDisplayed = mModel.isTrackInModel( theTrack );
@@ -138,26 +138,26 @@ public class TableContentController implements LibraryListener, SelectedItemList
 
     @Override
     public void selectItem( LibraryItem inItem ) {
-        mView.selectItem( new TableContentItem( inItem ) );
+        mView.selectItem( new SimpleTableContentItem( inItem ) );
     }
 
     Clipboard getClipboard() { return mMainController.getClipboard(); }
 
     Clipboard getDragboard() { return mMainController.getDragboard(); }
 
-    void updateTrack( TableContentItem inTrack, int inField, String inOldValue, String inNewValue ) {
+    void updateTrack( SimpleTableContentItem inTrack, int inField, String inOldValue, String inNewValue ) {
         boolean isValid = ! inOldValue.equals( inNewValue ) && inNewValue.length() > 0;
         switch( inField ) {
-            case TableContentView.sColumnNumber:
+            case SimpleTableContentView.sColumnNumber:
                 inTrack.setTrackNumber( isValid ? Integer.valueOf( inNewValue) : Integer.valueOf( inOldValue ) );
                 break;
-            case TableContentView.sColumnTitle:
+            case SimpleTableContentView.sColumnTitle:
                 inTrack.setTitle( isValid ? inNewValue : inOldValue );
                 break;
-            case TableContentView.sColumnAlbum:
+            case SimpleTableContentView.sColumnAlbum:
                 inTrack.setAlbumName( isValid ? inNewValue : inOldValue );
                 break;
-            case TableContentView.sColumnArtist:
+            case SimpleTableContentView.sColumnArtist:
                 inTrack.setArtistName( isValid ? inNewValue : inOldValue );
                 break;
         }
@@ -174,7 +174,7 @@ public class TableContentController implements LibraryListener, SelectedItemList
             mLogger.warning( "Invalid type 'track' specified" );
             return;
         }
-        ObservableList< TableContentItem > theTracks = FXCollections.observableArrayList();
+        ObservableList< SimpleTableContentItem > theTracks = FXCollections.observableArrayList();
         switch( inContainer.getType() ) {
             case artist:
                 loadArtist( inContainer, theTracks );
@@ -218,7 +218,7 @@ public class TableContentController implements LibraryListener, SelectedItemList
         inEvent.consume();
     }
 
-    private void handleOnContentsChanged( ListChangeListener.Change< ? extends TableContentItem > inChanges ) {
+    private void handleOnContentsChanged( ListChangeListener.Change< ? extends SimpleTableContentItem > inChanges ) {
         if ( mListeners.isEmpty() ) {
             return;
         }
@@ -239,7 +239,7 @@ public class TableContentController implements LibraryListener, SelectedItemList
         }
     }
 
-    private void handleOnEditCommit( TableColumn.CellEditEvent< TableContentItem, String > inEvent ) {
+    private void handleOnEditCommit( TableColumn.CellEditEvent< SimpleTableContentItem, String > inEvent ) {
         updateTrack( inEvent.getRowValue(),
                 inEvent.getTablePosition().getColumn(),
                 inEvent.getOldValue().trim(),
@@ -270,7 +270,7 @@ public class TableContentController implements LibraryListener, SelectedItemList
         mView.getTableView().setOnKeyReleased( this::handleOnKeyReleased );
         mView.getTableView().setOnMouseClicked( this::handleOnMouseClicked );
         mView.getTableView().itemsProperty().getValue().addListener( this::handleOnContentsChanged );
-        for ( TableColumn<TableContentItem, String > theColumn : mView.getColumns() ) {
+        for ( TableColumn<SimpleTableContentItem, String > theColumn : mView.getColumns() ) {
             theColumn.setOnEditCommit( this::handleOnEditCommit );
         }
         mView.getContextMenu().setOnShown( this::handleContextMenuOnShown );
@@ -279,7 +279,7 @@ public class TableContentController implements LibraryListener, SelectedItemList
         mView.getMenuItemRemove().setOnAction( this::handleContextMenuOnAction );
     }
 
-    private void loadArtist( LibraryItem inArtist, ObservableList< TableContentItem > inTracks ) {
+    private void loadArtist( LibraryItem inArtist, ObservableList< SimpleTableContentItem > inTracks ) {
         LibraryBrowseResult theResult = mMainController.getLibrary().browse( inArtist.getId() );
         if ( theResult.mMaxResults == -1 ) {
             return;
@@ -289,7 +289,7 @@ public class TableContentController implements LibraryListener, SelectedItemList
         }
     }
 
-    private void loadRoot( LibraryItem inRoot, ObservableList< TableContentItem > inTracks ) {
+    private void loadRoot( LibraryItem inRoot, ObservableList< SimpleTableContentItem > inTracks ) {
         LibraryBrowseResult theResult = mMainController.getLibrary().browse( inRoot.getId() );
         if ( theResult.mMaxResults == -1 ) {
             return;
@@ -299,12 +299,12 @@ public class TableContentController implements LibraryListener, SelectedItemList
         }
     }
 
-    private void loadTrackContainer( LibraryItem inTrackContainer, ObservableList< TableContentItem > inTracks ) {
+    private void loadTrackContainer( LibraryItem inTrackContainer, ObservableList< SimpleTableContentItem > inTracks ) {
         LibraryBrowseResult theResult = mMainController.getLibrary().browse( inTrackContainer.getId() );
         if ( theResult.mMaxResults == -1 ) {
             return;
         }
-        inTracks.addAll( theResult.mResults.stream().map( TableContentItem::new ).collect( Collectors.toList() ) );
+        inTracks.addAll( theResult.mResults.stream().map( SimpleTableContentItem::new ).collect( Collectors.toList() ) );
     }
 
     private boolean shouldTrackBeInModel( LibraryItem inTrack ) {

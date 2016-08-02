@@ -21,6 +21,7 @@ import jmusic.util.ConfigListener;
 import jmusic.util.JMusicExecutor;
 import jmusic.util.ProgressListener;
 
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TimerTask;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class Library implements PersistenceListener, ConfigListener {
     private static final long sDefaultMonitorDelay = 5000; //20000;
@@ -138,7 +140,7 @@ public class Library implements PersistenceListener, ConfigListener {
         return theResult;
     }
 
-    public void findBrokenTracks( Long inRootId, BrokenTrackCallback inCallback ) throws LibraryException {
+    public void findBrokenTracks( Long inRootId, BrokenTrackCallback inCallback ) {
         JMusicExecutor.scheduleTask( new FindBrokenTracksTask( inRootId, inCallback ), 0 );
     }
 
@@ -146,12 +148,16 @@ public class Library implements PersistenceListener, ConfigListener {
         String theUri = inTrack.getUri();
         Backend theBackend = BackendFactory.getBackend( inTrack.getUri() );
         if ( ! theBackend.isWriteable() ) {
-
             LibraryException theException = new LibraryException( "Backend doesnt support update" );
             mLogger.throwing( "Library", "fixBrokenTrack", theException );
             throw theException;
         }
         theBackend.fixTrack( theUri, inTrack );
+    }
+
+    public InputStream getThumbnailInputStream( LibraryItem inItem ) throws LibraryException {
+        String theUri = inItem.getUri();
+        return theUri != null ? BackendFactory.getBackend( theUri ).getThumbnailInputStream( theUri ) : null;
     }
 
     public LibraryItem getItem( Long inId ) {
@@ -166,19 +172,7 @@ public class Library implements PersistenceListener, ConfigListener {
     public LibraryItem getRootOfRoots() {
         return new LibraryConverter().convert( sRootOfRoots );
     }
-/*
-    public InputStream getTrackInputStream( LibraryItem inItem, ProgressListener inListener ) throws LibraryException {
-        String theUri = inItem.getUri();
-        Backend theBackend = BackendFactory.getBackend( theUri );
-        return theBackend.getTrackInputStream( theUri, inListener );
-    }
 
-    public long getTrackInputStreamLength( LibraryItem inItem ) throws LibraryException {
-        String theUri = inItem.getUri();
-        Backend theBackend = BackendFactory.getBackend( theUri );
-        return theBackend.getTrackInputStreamLength( theUri );
-    }
-*/
     public List< LibraryItem > getTracks( LibraryItem inContainer ) {
         PersistentContainer theContainer = PersistentContainer.getContainerForId( inContainer.getId() );
         return theContainer != null ?
@@ -195,9 +189,7 @@ public class Library implements PersistenceListener, ConfigListener {
         for ( PersistentAlbum theAlbum : PersistentAlbum.getUnknownAlbums( inRootId ) ) {
             theTracks.addAll( theAlbum.getTracks( theConverter ) );
         }
-        for ( PersistentTrack theTrack : PersistentTrack.getUnknownTracks( inRootId ) ) {
-            theTracks.add( theConverter.convert( theTrack ) );
-        }
+        theTracks.addAll( PersistentTrack.getUnknownTracks( inRootId ).stream().map( theConverter::convert ).collect( Collectors.toList() ) );
         return new ArrayList<>( theTracks );
     }
 
@@ -242,9 +234,7 @@ public class Library implements PersistenceListener, ConfigListener {
     public void onPostPersist( PersistentObject inObject ) {
         LibraryItem theObject = new LibraryConverter().convert( inObject );
         synchronized( mListeners ) {
-            mListeners.stream().forEach( (theListener) -> {
-                theListener.onObjectCreate( theObject );
-            } );
+            mListeners.forEach( ( theListener ) -> theListener.onObjectCreate( theObject ) );
         }
     }
 
@@ -252,9 +242,7 @@ public class Library implements PersistenceListener, ConfigListener {
     public void onPostRemove( PersistentObject inObject ) {
         LibraryItem theObject = new LibraryConverter().convert( inObject );
         synchronized( mListeners ) {
-            mListeners.stream().forEach( (theListener) -> {
-                theListener.onObjectDestroy( theObject );
-            } );
+            mListeners.forEach( ( theListener ) -> theListener.onObjectDestroy( theObject ) );
         }
     }
 
@@ -262,9 +250,7 @@ public class Library implements PersistenceListener, ConfigListener {
     public void onPostUpdate( PersistentObject inObject ) {
         LibraryItem theObject = new LibraryConverter().convert( inObject );
         synchronized( mListeners ) {
-            mListeners.stream().forEach( (theListener) -> {
-                theListener.onObjectUpdate( theObject );
-            } );
+            mListeners.forEach( ( theListener ) -> theListener.onObjectUpdate( theObject ) );
         }
     }
 
@@ -413,6 +399,7 @@ public class Library implements PersistenceListener, ConfigListener {
         PersistentTrack theTrack = new PersistentTrack();
         theTrack.setBitRate( inTrack.getBitRate() );
         theTrack.setDuration( inTrack.getDuration() );
+        theTrack.setHasThumbnail( inTrack.hasThumbnail() );
         theTrack.setLastModified( inTrack.getLastModified() );
         theTrack.setName( inTrack.getTitle() );
         theTrack.setNumber( inTrack.getTrackNumber() );
@@ -545,17 +532,13 @@ public class Library implements PersistenceListener, ConfigListener {
             return;
         }
         HashSet< PersistentContainer > theParents = new HashSet<>();
-        for ( PersistentContainer theContainer : inContainers ) {
-            if ( theContainer.getChildCount() == 0 ) {
-                PersistentContainer theParent = theContainer.getParent();
-                theParents.add( theParent );
-                theParent.removeChild( theContainer );
-                theContainer.destroy();
-            }
-        }
-        for ( PersistentContainer theContainer : theParents ) {
-            theContainer.commit();
-        }
+        inContainers.stream().filter( theContainer -> theContainer.getChildCount() == 0 ).forEach( theContainer -> {
+            PersistentContainer theParent = theContainer.getParent();
+            theParents.add( theParent );
+            theParent.removeChild( theContainer );
+            theContainer.destroy();
+        } );
+        theParents.forEach( PersistentContainer::commit );
     }
 
     private void removeRoot( PersistentRoot inRoot ) {
@@ -618,6 +601,10 @@ public class Library implements PersistenceListener, ConfigListener {
             inOriginal.setNumber( theUpdatedTrackNumber );
             needsCommit = true;
         }
+        if ( inOriginal.hasThumbnail() != inUpdated.hasThumbnail() ) {
+            inOriginal.setHasThumbnail( inUpdated.hasThumbnail() );
+            needsCommit = true;
+        }
         if ( needsCommit ) {
             inOriginal.setLastModified( System.currentTimeMillis() );
             inOriginal.commit();
@@ -631,8 +618,8 @@ public class Library implements PersistenceListener, ConfigListener {
     }
 
     public interface BrokenTrackCallback {
-        public void onBrokenTrackFound( String inUri );
-        public void onComplete();
+        void onBrokenTrackFound( String inUri );
+        void onComplete();
     }
 
     class FindBrokenTracksTask extends TimerTask {

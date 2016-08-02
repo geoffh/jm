@@ -7,30 +7,26 @@ import jmusic.util.ProgressListener;
 import org.farng.mp3.AbstractMP3Tag;
 import org.farng.mp3.MP3File;
 import org.farng.mp3.TagException;
+import org.farng.mp3.id3.AbstractID3v2;
+import org.farng.mp3.id3.AbstractID3v2Frame;
+import org.farng.mp3.id3.FrameBodyAPIC;
 import org.farng.mp3.id3.ID3v2_4;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.FileVisitor;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
+import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Logger;
 
 public class FileBackend implements Backend {
     public static final String sUriScheme = "file";
     private static final String sAudioFileSuffix = ".mp3";
+    private static final long sAPICEncodingISO88591 = 0;
+    private static final long sAPICEncodingUTF8 = 3;
     
     private final String mRootUri;
     private final Logger mLogger = Logger.getLogger( FileBackend.class.getName() );
@@ -107,6 +103,31 @@ public class FileBackend implements Backend {
             }
         } catch( URISyntaxException | IOException | TagException theException ) {
             mLogger.throwing( "FileBackend", "update", theException );
+            throw new LibraryException( theException );
+        }
+    }
+
+    @Override
+    public InputStream getThumbnailInputStream( String inUri ) throws LibraryException {
+        try {
+            File theFile = uriToFile( inUri );
+            if ( ! theFile.exists() || ! theFile.isFile() ) {
+                return null;
+            }
+            AbstractID3v2Frame theFrame = getAPIC( new MP3File( theFile ) );
+            FrameBodyAPIC theFrameBody = ( FrameBodyAPIC )theFrame.getBody();
+            byte[] theData = ( byte[] ) theFrameBody.getObject( "Picture Data" );
+            Long theEncoding = ( Long )theFrameBody.getObject( "Text Encoding" );
+            String theMimeType = ( String )theFrameBody.getObject( "MIME Type" );
+            InputStream theStream;
+            if ( sAPICEncodingUTF8 == theEncoding || "image/png".equalsIgnoreCase( theMimeType ) ) {
+                theStream = new ByteArrayInputStream( theData, 1, theData.length - 1 );
+            } else {
+               theStream = new ByteArrayInputStream( theData );
+            }
+            return new BufferedInputStream( theStream );
+        } catch ( Exception theException ) {
+            mLogger.throwing(  "FileBackend", "getInputStream", theException );
             throw new LibraryException( theException );
         }
     }
@@ -299,9 +320,9 @@ public class FileBackend implements Backend {
     }
     
     private AbstractMP3Tag getTag( MP3File inFile ) throws LibraryException {
-        boolean isV1 = inFile.hasID3v1Tag();
-        AbstractMP3Tag theTag = isV1 ?
-            inFile.getID3v1Tag() : inFile.getID3v2Tag();
+        boolean isV2 = inFile.hasID3v2Tag();
+        AbstractMP3Tag theTag = isV2 ?
+            inFile.getID3v2Tag() : inFile.getID3v1Tag();
         if ( theTag == null ) {
             LibraryException theException =
                 new LibraryException( "Error: Failed to get ID3 tag for file '" +
@@ -341,7 +362,7 @@ public class FileBackend implements Backend {
             theItem.setSize( inFile.length() );
             theItem.setTitle( theTitle );
             String theTrackNumber = null;
-            if ( ! theFile.hasID3v1Tag() ) {
+            if ( theFile.hasID3v2Tag() ) {
                 theTrackNumber = theTag.getTrackNumberOnAlbum();
                 if ( theTrackNumber != null && theTrackNumber.length() > 0 ) {
                     if ( "0".equals(  theTrackNumber ) ) {
@@ -357,10 +378,28 @@ public class FileBackend implements Backend {
             }
             theItem.setTrackNumber( theTrackNumber != null && theTrackNumber.length() > 0 ?
                 Integer.valueOf( theTrackNumber ) : LibraryItem.sTrackNumberUnknown );
+            theItem.setHasThumbnail( getAPIC( theFile ) != null );
         } catch( IOException | TagException | UnsupportedOperationException  theException ) {
             throw new LibraryException( theException );
         }
         return theItem;
+    }
+
+    private AbstractID3v2Frame getAPIC( MP3File inFile ) {
+        if ( ! inFile.hasID3v2Tag() ) {
+            return null;
+        }
+        AbstractID3v2 theTag = inFile.getID3v2Tag();
+        Iterator theIterator = theTag.getFrameIterator();
+        AbstractID3v2Frame theFrame = null;
+        while ( theIterator.hasNext() ) {
+            theFrame = ( AbstractID3v2Frame )theIterator.next();
+            if ( theFrame.getIdentifier().startsWith( "APIC" ) ) {
+                break;
+            }
+            theFrame = null;
+        }
+        return theFrame;
     }
     
     private boolean isAudioFile( File inFile ) {

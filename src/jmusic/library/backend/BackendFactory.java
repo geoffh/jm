@@ -29,7 +29,7 @@ public class BackendFactory {
     }
 
     private static Backend createBackend( String inUri ) {
-        Backend theBackend = null;
+        Backend theBackend;
         if ( inUri.startsWith( CDBackend.sUriScheme ) ) {
             theBackend = new CDBackend();
         } else {

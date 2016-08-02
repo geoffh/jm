@@ -39,27 +39,21 @@ public class PersistenceManager {
     static void onPostPersist( PersistentObject inObject ) {
         sLogger.log( Level.FINEST, "onPostPersist:{0}", inObject.toString());
         synchronized( sInstance.mListeners ) {
-            sInstance.mListeners.stream().forEach( ( theListener ) -> {
-                theListener.onPostPersist( inObject );
-            } );
+            sInstance.mListeners.forEach( ( theListener ) -> theListener.onPostPersist( inObject ) );
         }
     }
 
     static void onPostRemove( PersistentObject inObject ) {
         sLogger.log( Level.FINEST, "onPostRemove:{0}", inObject.toString());
         synchronized( sInstance.mListeners ) {
-            sInstance.mListeners.stream().forEach( ( theListener ) -> {
-                theListener.onPostRemove( inObject );
-            } );
+            sInstance.mListeners.forEach( ( theListener ) -> theListener.onPostRemove( inObject ) );
         }
     }
     
     static void onPostUpdate( PersistentObject inObject ) {
         sLogger.log( Level.FINEST, "onPostUpdate:{0}", inObject.toString());
         synchronized( sInstance.mListeners ) {
-            sInstance.mListeners.stream().forEach( ( theListener ) -> {
-                theListener.onPostUpdate( inObject );
-            } );
+            sInstance.mListeners.forEach( ( theListener ) -> theListener.onPostUpdate( inObject ) );
         }
     }
     

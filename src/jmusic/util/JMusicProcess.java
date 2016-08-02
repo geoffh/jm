@@ -9,9 +9,9 @@ import java.util.logging.Logger;
 
 public class JMusicProcess {
     public interface Callback {
-        public default void onExit( int inExitCode ) {}
-        public default boolean onStdErr( String inStdErr ) { return true; }
-        public default boolean onStdOut( String inStdOut ) { return true; }
+        default void onExit( int inExitCode ) {}
+        default boolean onStdErr( String inStdErr ) { return true; }
+        default boolean onStdOut( String inStdOut ) { return true; }
     }
 
     private Process mProcess;

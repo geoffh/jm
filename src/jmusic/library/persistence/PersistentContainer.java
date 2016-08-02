@@ -3,7 +3,9 @@ package jmusic.library.persistence;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.logging.Level;
+import java.util.stream.Collectors;
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -74,11 +76,7 @@ public abstract class PersistentContainer extends PersistentBrowsable {
 
     // Returns unordered list
     public < T > List< T > getTracks( PersistentObjectConverter< T > inConverter ) {
-        List< T > theObjects = new LinkedList<>();
-        for ( PersistentObject theObject : getTracks() ) {
-            theObjects.add( inConverter.convert( theObject ) );
-        }
-        return theObjects;
+        return getTracks().stream().map( ( Function< PersistentObject, T > ) inConverter::convert ).collect( Collectors.toCollection( LinkedList::new ) );
     }
     
     public boolean removeChild( PersistentObject inChild ) {

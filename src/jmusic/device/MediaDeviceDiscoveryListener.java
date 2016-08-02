@@ -1,8 +1,8 @@
 package jmusic.device;
 
 public interface MediaDeviceDiscoveryListener {
-    public default void onMediaRendererDeviceAdded( MediaRendererDevice inMediaRendererDevice ) {}
-    public default void onMediaRendererDeviceRemoved( MediaRendererDevice inMediaRendererDevice ) {}
-    public default void onMediaServerDeviceAdded( MediaServerDevice inMediaServerDevice ) {}
-    public default void onMediaServerDeviceRemoved( MediaServerDevice inMediaServerDevice ) {}
+    default void onMediaRendererDeviceAdded( MediaRendererDevice inMediaRendererDevice ) {}
+    default void onMediaRendererDeviceRemoved( MediaRendererDevice inMediaRendererDevice ) {}
+    default void onMediaServerDeviceAdded( MediaServerDevice inMediaServerDevice ) {}
+    default void onMediaServerDeviceRemoved( MediaServerDevice inMediaServerDevice ) {}
 }

@@ -19,7 +19,7 @@ public class EditTrack {
             FXMLLoader theLoader = new FXMLLoader( EditTrack.class.getResource( sFXMLDocument ) );
             Parent theParent = theLoader.load();
             Stage theStage = new Stage();
-            EditTrackController theController = theLoader.< EditTrackController >getController();
+            EditTrackController theController = theLoader.getController();
             theController.init( theStage, inMainController, inType );
             theStage.setScene( new Scene( theParent ) );
             theStage.initModality( Modality.APPLICATION_MODAL);

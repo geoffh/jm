@@ -17,6 +17,7 @@ class LibraryConverter implements PersistentObjectConverter {
     @Override
     public LibraryItem convert( PersistentObject inObject ) {
         LibraryItem theItem = new LibraryItem();
+        theItem.setHasThumbnail( inObject.hasThumbnail() );
         theItem.setId( inObject.getId() );
         theItem.setRootId( inObject.getRootId() );
         theItem.setTitle( inObject.getName() );

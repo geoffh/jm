@@ -20,7 +20,7 @@ public class AddRoot {
             FXMLLoader theLoader = new FXMLLoader( AddRoot.class.getResource( sFXMLDocument ) );
             Parent theParent = theLoader.load();
             Stage theStage = new Stage();
-            AddRootController theController = theLoader.< AddRootController >getController();
+            AddRootController theController = theLoader.getController();
             theController.setStage( theStage );
             theStage.setScene( new Scene( theParent ) );
             theStage.initModality( Modality.APPLICATION_MODAL);

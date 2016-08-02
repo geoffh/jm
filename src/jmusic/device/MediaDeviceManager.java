@@ -128,9 +128,7 @@ public class MediaDeviceManager implements MediaDeviceDiscoveryListener {
 
     public void stopDeviceDiscovery() {
         synchronized( mDiscoverers ) {
-            for ( MediaDeviceDiscoverer theDiscoverer : mDiscoverers ) {
-                theDiscoverer.stopDiscovery();
-            }
+            mDiscoverers.forEach( MediaDeviceDiscoverer::stopDiscovery );
         }
     }
 }

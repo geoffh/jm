@@ -1,15 +1,15 @@
-package jmusic.ui.treenavigation;
+package jmusic.ui.navigation;
 
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 import jmusic.library.LibraryItem;
 
-class TreeNavigationItem extends TreeItem< LibraryItem >  {
-    private final TreeNavigationModel mModel;
+class NavigationItem extends TreeItem< LibraryItem >  {
+    private final NavigationModel mModel;
     private final ObservableList< TreeItem< LibraryItem > > mChildren;
     private boolean mFirstLoad = true;
 
-    TreeNavigationItem( TreeNavigationModel inModel, LibraryItem inContainer ) {
+    NavigationItem( NavigationModel inModel, LibraryItem inContainer ) {
         mModel = inModel;
         setValue( inContainer );
         mChildren = super.getChildren();
@@ -28,8 +28,7 @@ class TreeNavigationItem extends TreeItem< LibraryItem >  {
 
     @Override
     public boolean isLeaf() {
-        LibraryItem theItem = getValue();
-        return theItem.isAlbum() || theItem.isPlaylist();
+        return mModel.isLeaf( getValue() );
     }
 
     @Override
@@ -37,19 +36,19 @@ class TreeNavigationItem extends TreeItem< LibraryItem >  {
         return getValue().toString();
     }
 
-    void addItem( TreeNavigationItem inItem ) {
+    void addItem( NavigationItem inItem ) {
         synchronized( mChildren ) {
             mChildren.add( findInsertionIndex( inItem ), inItem );
         }
     }
 
-    void removeItem( TreeNavigationItem inItem ) {
+    void removeItem( NavigationItem inItem ) {
         synchronized( mChildren ) {
             mChildren.remove( inItem );
         }
     }
 
-    private int findInsertionIndex( TreeNavigationItem inItem ) {
+    private int findInsertionIndex( NavigationItem inItem ) {
         int theIndex = 0;
         synchronized( mChildren ) {
             for ( TreeItem< LibraryItem > theItem : mChildren ) {

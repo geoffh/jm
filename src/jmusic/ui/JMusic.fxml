@@ -30,38 +30,16 @@
             <HBox alignment="CENTER" prefHeight="-1.0" prefWidth="-1.0">
               <children>
                 <Button fx:id="playToolBarRewindButton" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="" text="">
-                  <graphic>
-                    <ImageView id="playToolBarRewindImage" fitHeight="20.0" fitWidth="20.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-                      <image>
-                        <Image url="@../resources/4_audio_title_back.png" />
-                      </image>
-                    </ImageView>
-                  </graphic>
                   <HBox.margin>
                     <Insets left="10.0" />
                   </HBox.margin>
                 </Button>
-                <Button fx:id="playToolBarPlayButton" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="" text="">
-                  <graphic>
-                    <ImageView id="playToolBarPlayImage" fitHeight="30.0" fitWidth="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-                      <image>
-                        <Image url="@../resources/4_audio_play.png" />
-                      </image>
-                    </ImageView>
-                  </graphic>
+                <Button fx:id="playToolBarPlayButton" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="">
                   <HBox.margin>
                     <Insets left="5.0" fx:id="x1" />
                   </HBox.margin>
                 </Button>
-                <Button fx:id="playToolBarForwardButton" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="" text="" HBox.margin="$x1">
-                  <graphic>
-                    <ImageView id="playToolBarForwardImage" fitHeight="20.0" fitWidth="20.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-                      <image>
-                        <Image url="@../resources/4_audio_title_forward.png" />
-                      </image>
-                    </ImageView>
-                  </graphic>
-                </Button>
+                <Button fx:id="playToolBarForwardButton" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="" text="" HBox.margin="$x1" />
               </children>
             </HBox>
             <HBox alignment="CENTER" maxWidth="80.0" minWidth="80.0" prefHeight="-1.0" prefWidth="80.0" HBox.hgrow="NEVER">

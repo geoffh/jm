@@ -33,6 +33,7 @@ public abstract class PersistentObject implements Serializable {
     protected String name;
     protected PersistentContainer parent;
     protected Long rootId;
+    protected boolean hasThumbnail;
     
     PersistentObject() {
         mLogger = Logger.getLogger(  getClass().getName() );
@@ -42,7 +43,11 @@ public abstract class PersistentObject implements Serializable {
     public String getName() { return name; }
     public PersistentContainer getParent() { return parent; }
     public Long getRootId() { return rootId; }
-    
+    public boolean hasThumbnail() { return hasThumbnail; }
+
+    public void setHasThumbnail( boolean inHasThumbnail ) {
+        hasThumbnail = inHasThumbnail;
+    }
     public void setName( String inName ) { name = inName; }
     public void setParent( PersistentContainer inParent ) { parent = inParent; }
     public void setRootId( Long inRootId ) { rootId = inRootId; }

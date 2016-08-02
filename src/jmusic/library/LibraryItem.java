@@ -25,6 +25,7 @@ public class LibraryItem extends HashMap< LibraryItem.PropertyName, Object >  {
         artistUri,
         bitRate,
         duration,
+        hasThumbnail,
         id,
         lastModified,
         number,
@@ -111,6 +112,10 @@ public class LibraryItem extends HashMap< LibraryItem.PropertyName, Object >  {
         return ( String )get( PropertyName.uri );
     }
 
+    public boolean hasThumbnail() {
+        return ( boolean )get( PropertyName.hasThumbnail );
+    }
+
     public boolean isAlbum() {
         return Type.album == getType();
     }
@@ -159,6 +164,10 @@ public class LibraryItem extends HashMap< LibraryItem.PropertyName, Object >  {
 
     public void setDuration( Integer inValue ) {
         put( PropertyName.duration, inValue );
+    }
+
+    public void setHasThumbnail( boolean inValue ) {
+        put( PropertyName.hasThumbnail, inValue );
     }
 
     public void setId( Long inValue ) {

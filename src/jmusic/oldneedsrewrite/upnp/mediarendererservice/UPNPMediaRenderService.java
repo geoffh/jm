@@ -146,7 +146,7 @@ public class UPNPMediaRenderService {
     @UpnpAction(out = @UpnpOutputArgument(name = "CurrentVolume", stateVariable = "VolumeDB"))
     public Integer getVolumeDB(@UpnpInputArgument(name = "InstanceID") UnsignedIntegerFourBytes instanceId,
                                @UpnpInputArgument(name = "Channel") String channelName) throws RenderingControlException {
-        return (int) 0;
+        return 0;
     }
 
     @UpnpAction
@@ -164,7 +164,7 @@ public class UPNPMediaRenderService {
     public VolumeRange getVolumeDBRange(@UpnpInputArgument(name = "InstanceID") UnsignedIntegerFourBytes instanceId,
                                         @UpnpInputArgument(name = "Channel") String channelName) throws RenderingControlException {
         VolumeDBRange theDBRange = Player.getInstance().getVolumeDBRange();
-        return new VolumeRange( (int)theDBRange.getMinValue(), (int)theDBRange.getMaxValue());
+        return new VolumeRange( theDBRange.getMinValue(), theDBRange.getMaxValue());
     }
 
     @UpnpAction(out = @UpnpOutputArgument(name = "CurrentLoudness", stateVariable = "Loudness"))

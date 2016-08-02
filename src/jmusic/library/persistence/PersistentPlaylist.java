@@ -30,7 +30,7 @@ public class PersistentPlaylist extends PersistentBrowsable {
 
     @Override
     public List< PersistentObject > browse( int inFirstResult, int inMaxResults ) {
-        return new LinkedList( tracks );
+        return new LinkedList<>( tracks );
     }
 
     public int getMaxBrowseResults() {

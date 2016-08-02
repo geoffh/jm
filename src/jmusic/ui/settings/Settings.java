@@ -19,7 +19,7 @@ public class Settings {
             FXMLLoader theLoader = new FXMLLoader( Settings.class.getResource( sFXMLDocument ) );
             Parent theParent = theLoader.load();
             Stage theStage = new Stage();
-            SettingsController theController = theLoader.< SettingsController >getController();
+            SettingsController theController = theLoader.getController();
             theController.init( theStage, inController );
             theStage.setScene( new Scene( theParent ) );
             theStage.initModality( Modality.APPLICATION_MODAL);

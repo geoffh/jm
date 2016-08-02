@@ -82,43 +82,23 @@ class SettingsMusicSourcesHandler implements SettingsHandler {
         theNameColumn.prefWidthProperty().bind( theWidth );
 
         TableColumn< MusicSourceItem, Boolean > theEnabledColumn = new TableColumn<>( "Enable Refresh" );
-        theEnabledColumn.setCellValueFactory( new Callback< TableColumn.CellDataFeatures< MusicSourceItem, Boolean >, ObservableValue< Boolean > >() {
-            @Override
-            public ObservableValue< Boolean > call( TableColumn.CellDataFeatures< MusicSourceItem, Boolean > inParam ) {
-                return inParam.getValue().enabledProperty();
-            }
-        } );
-        theEnabledColumn.setCellFactory( new Callback< TableColumn< MusicSourceItem, Boolean >, TableCell< MusicSourceItem, Boolean > >() {
-            @Override
-            public TableCell< MusicSourceItem, Boolean > call( TableColumn< MusicSourceItem, Boolean > inParam ) {
-                return new CheckBoxTableCell< MusicSourceItem, Boolean >();
-            }
-        } );
+        theEnabledColumn.setCellValueFactory( inParam -> inParam.getValue().enabledProperty() );
+        theEnabledColumn.setCellFactory( inParam -> new CheckBoxTableCell< MusicSourceItem, Boolean >() );
         theEnabledColumn.setEditable( true );
         theEnabledColumn.prefWidthProperty().bind( theWidth );
 
         TableColumn< MusicSourceItem, Number > theIntervalColumn = new TableColumn( "Interval" );
-        theIntervalColumn.setCellValueFactory( new Callback< TableColumn.CellDataFeatures< MusicSourceItem, Number >, ObservableValue< Number > >() {
+        theIntervalColumn.setCellValueFactory( inParam -> inParam.getValue().intervalProperty() );
+        theIntervalColumn.setCellFactory( param -> new TextFieldTableCell< MusicSourceItem, Number >( new StringConverter< Number >() {
             @Override
-            public ObservableValue< Number > call( TableColumn.CellDataFeatures< MusicSourceItem, Number > inParam ) {
-                return inParam.getValue().intervalProperty();
+            public String toString( Number inObject ) {
+                return inObject.toString();
             }
-        } );
-        theIntervalColumn.setCellFactory( new Callback< TableColumn< MusicSourceItem, Number >, TableCell< MusicSourceItem, Number > >() {
             @Override
-            public TableCell< MusicSourceItem, Number > call( TableColumn< MusicSourceItem, Number > param ) {
-                return new TextFieldTableCell< MusicSourceItem, Number >( new StringConverter< Number >() {
-                    @Override
-                    public String toString( Number inObject ) {
-                        return inObject.toString();
-                    }
-                    @Override
-                    public Number fromString( String inString ) {
-                        return Integer.valueOf( inString );
-                    }
-                } );
+            public Number fromString( String inString ) {
+                return Integer.valueOf( inString );
             }
-        } );
+        } ) );
         theIntervalColumn.setEditable( true );
         theIntervalColumn.prefWidthProperty().bind( theWidth );
 
@@ -152,13 +132,10 @@ class SettingsMusicSourcesHandler implements SettingsHandler {
     private void initRefreshChoiceAndInterval() {
         ChoiceBox< RefreshChoice > theChoiceBox = mController.getMusicSourcesRefreshChoice();
         TextField theTextField = mController.getMusicSourcesRefreshInterval();
-        theChoiceBox.getSelectionModel().selectedItemProperty().addListener( new ChangeListener< RefreshChoice >() {
-            @Override
-            public void changed( ObservableValue< ? extends RefreshChoice > inObservable, RefreshChoice inOldValue, RefreshChoice inNewValue ) {
-                theTextField.setDisable( !RefreshChoice.configureAllEnabled.equals( inNewValue ) );
-                mController.getMusicSourcesTableView().setDisable(
-                    !RefreshChoice.configureIndividually.equals( inNewValue ) );
-            }
+        theChoiceBox.getSelectionModel().selectedItemProperty().addListener( ( inObservable, inOldValue, inNewValue ) -> {
+            theTextField.setDisable( !RefreshChoice.configureAllEnabled.equals( inNewValue ) );
+            mController.getMusicSourcesTableView().setDisable(
+                !RefreshChoice.configureIndividually.equals( inNewValue ) );
         } );
         theChoiceBox.getItems().setAll(
             RefreshChoice.configureAllEnabled,

@@ -7,6 +7,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @NamedQueries( {
@@ -17,11 +18,7 @@ import java.util.List;
 } )
 public abstract class PersistentBrowsable extends PersistentObject {
     public < T > List< T > browse( int inFirstResult, int inMaxResults, PersistentObjectConverter< T > inConverter ) {
-        List< T > theObjects = new LinkedList<>();
-        for ( PersistentObject theObject : browse( inFirstResult, inMaxResults ) ) {
-            theObjects.add( inConverter.convert( theObject ) );
-        }
-        return theObjects;
+        return browse( inFirstResult, inMaxResults ).stream().map( inConverter::convert ).collect( Collectors.toCollection( LinkedList::new ) );
     }
 
     public List< PersistentObject > browse( int inFirstResult, int inMaxResults ) {

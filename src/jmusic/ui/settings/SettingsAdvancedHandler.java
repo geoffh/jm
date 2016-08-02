@@ -110,39 +110,31 @@ class SettingsAdvancedHandler implements SettingsHandler {
         TreeTableColumn< LoggingItem, String > theNameColumn = new TreeTableColumn<>( "Name" );
         theNameColumn.prefWidthProperty().bind( theWidth.multiply( 0.75 ) );
         theNameColumn.setCellValueFactory(
-            new Callback< TreeTableColumn.CellDataFeatures< LoggingItem, String >, ObservableValue< String > >() {
-            @Override
-            public ObservableValue< String > call( TreeTableColumn.CellDataFeatures< LoggingItem, String > inParam ) {
-                return new ReadOnlyStringWrapper( inParam.getValue().getValue().getName() );
-            }
-        } );
+                inParam -> new ReadOnlyStringWrapper( inParam.getValue().getValue().getName() ) );
         TreeTableView< LoggingItem > theTreeTableView = new TreeTableView<>( sRootItem );
 
         TreeTableColumn< LoggingItem, ComboBox< String > > theLevelColumn = new TreeTableColumn<>( "Level" );
         theLevelColumn.prefWidthProperty().bind( theWidth.multiply( 0.25 ) );
         theLevelColumn.setCellValueFactory(
-            new Callback< TreeTableColumn.CellDataFeatures< LoggingItem, ComboBox< String > >, ObservableValue< ComboBox< String > > >() {
-            @Override
-            public ObservableValue< ComboBox< String > > call( TreeTableColumn.CellDataFeatures< LoggingItem, ComboBox< String > > inParam ) {
-                ComboBox< String > theComboBox = new ComboBox< String >( sLevels );
-                LoggingItem theItem = inParam.getValue().getValue();
-                theComboBox.setUserData( theItem );
-                Level theLevel = theItem.getLevel();
-                theComboBox.getSelectionModel().select(
-                    theLevel != null ? theLevel.getLocalizedName() : "Unset" );
-                theComboBox.getSelectionModel().selectedItemProperty().addListener( new ChangeListener< String >() {
-                    @Override
-                    public void changed( ObservableValue< ? extends String > inObservable, String inOldValue, String inNewValue ) {
-                        Level theLevel = null;
-                        if ( ! "Unset".equals( inNewValue ) ) {
-                            theLevel = Level.parse( inNewValue );
+                inParam -> {
+                    ComboBox< String > theComboBox = new ComboBox< String >( sLevels );
+                    LoggingItem theItem = inParam.getValue().getValue();
+                    theComboBox.setUserData( theItem );
+                    Level theLevel = theItem.getLevel();
+                    theComboBox.getSelectionModel().select(
+                        theLevel != null ? theLevel.getLocalizedName() : "Unset" );
+                    theComboBox.getSelectionModel().selectedItemProperty().addListener( new ChangeListener< String >() {
+                        @Override
+                        public void changed( ObservableValue< ? extends String > inObservable, String inOldValue, String inNewValue ) {
+                            Level theLevel = null;
+                            if ( ! "Unset".equals( inNewValue ) ) {
+                                theLevel = Level.parse( inNewValue );
+                            }
+                            ( ( LoggingItem )theComboBox.getUserData() ).setLevel( theLevel );
                         }
-                        ( ( LoggingItem )theComboBox.getUserData() ).setLevel( theLevel );
-                    }
+                    } );
+                    return new ReadOnlyObjectWrapper< ComboBox< String > >( theComboBox );
                 } );
-                return new ReadOnlyObjectWrapper< ComboBox< String > >( theComboBox );
-            }
-        } );
         theTreeTableView.getColumns().setAll( theNameColumn, theLevelColumn );
 
         thePane.setTopAnchor( theTreeTableView, 0.0 );

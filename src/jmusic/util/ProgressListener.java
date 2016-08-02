@@ -1,9 +1,9 @@
 package jmusic.util;
 
 public interface ProgressListener {
-    public default void data( Object inData ) {}
-    public default void onErrorMessage( String inMessage ) {}
-    public default void onComplete() {}
-    public default void onProgress( int inPercent ) {}
-    public default void onStatusMessage( String inMessage ) {}
+    default void data( Object inData ) {}
+    default void onErrorMessage( String inMessage ) {}
+    default void onComplete() {}
+    default void onProgress( int inPercent ) {}
+    default void onStatusMessage( String inMessage ) {}
 }

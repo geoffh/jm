@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 
 public class UPNPLocalDeviceUtils {
     public interface Fireable {
-        public void fireLastChange();
+        void fireLastChange();
     }
 
     private static final String sDefaultDeviceNumber = "1";

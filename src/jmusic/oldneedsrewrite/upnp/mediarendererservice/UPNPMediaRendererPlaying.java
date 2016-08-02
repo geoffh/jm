@@ -46,7 +46,6 @@ public class UPNPMediaRendererPlaying extends Playing implements ProgressListene
             PositionInfo thePositionInfo = getTransport().getPositionInfo();
             long theDuration = thePositionInfo.getTrackDurationSeconds();
             long theElapsed = theDuration * inProgress / 100;
-            PositionInfo p = new PositionInfo( thePositionInfo, theElapsed, 0 );
             getTransport().setPositionInfo(
                 new PositionInfo( thePositionInfo, theElapsed, 0 ) );
             mProgress = inProgress;

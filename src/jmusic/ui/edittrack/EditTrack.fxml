@@ -8,7 +8,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="486.0" prefWidth="486.0000999999975" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="jmusic.ui.edittrack.EditTrackController">
+<AnchorPane id="AnchorPane" prefHeight="486.0" prefWidth="486.0000999999975" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jmusic.ui.edittrack.EditTrackController">
   <children>
     <SplitPane dividerPositions="0.5971074380165289" focusTraversable="true" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <items>
@@ -25,26 +25,10 @@
                 <TextField fx:id="trackNumber" alignment="CENTER_LEFT" editable="true" prefColumnCount="12" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
                 <Label prefWidth="94.0" text="Track Name" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <TextField fx:id="trackName" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                <Button fx:id="upButton" defaultButton="false" focusTraversable="false" mnemonicParsing="false" onAction="#handleUpButtonAction" text="" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                  <graphic>
-                    <ImageView fitHeight="20.0" fitWidth="20.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-                      <image>
-                        <Image url="@../resources/4-arrow-up.png" />
-                      </image>
-                    </ImageView>
-                  </graphic>
-                </Button>
+                <Button fx:id="upButton" defaultButton="false" focusTraversable="false" mnemonicParsing="false" onAction="#handleUpButtonAction" text="up" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                 <Label prefWidth="94.0" text="Artist" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <TextField fx:id="trackArtist" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                <Button fx:id="downButton" defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#handleDownButtonAction" text="" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-                  <graphic>
-                    <ImageView fitHeight="20.0" fitWidth="20.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-                      <image>
-                        <Image url="@../resources/4-arrow-down.png" />
-                      </image>
-                    </ImageView>
-                  </graphic>
-                </Button>
+                <Button fx:id="downButton" defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#handleDownButtonAction" text="down" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                 <Label prefWidth="94.0" text="Album" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <TextField fx:id="trackAlbum" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
               </children>

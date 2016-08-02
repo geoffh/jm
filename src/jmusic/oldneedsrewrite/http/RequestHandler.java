@@ -70,13 +70,10 @@ class RequestHandler implements HttpRequestHandler {
 
     private void sendError( HttpResponse inResponse, int inStatus, final String inMsg ) {
         inResponse.setStatusCode( inStatus );
-        EntityTemplate theBody = new EntityTemplate( new ContentProducer() {
-            @Override
-            public void writeTo( OutputStream theOStream ) throws IOException {
-                OutputStreamWriter theWriter = new OutputStreamWriter( theOStream, "UTF-8");
-                theWriter.write( inMsg );
-                theWriter.flush();
-            }
+        EntityTemplate theBody = new EntityTemplate( theOStream -> {
+            OutputStreamWriter theWriter = new OutputStreamWriter( theOStream, "UTF-8");
+            theWriter.write( inMsg );
+            theWriter.flush();
         } );
         theBody.setContentType( "text/html; charset=UTF-8" );
         inResponse.setEntity( theBody );

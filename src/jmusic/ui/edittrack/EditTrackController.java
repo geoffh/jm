@@ -14,6 +14,7 @@ import jmusic.library.Library;
 import jmusic.library.LibraryException;
 import jmusic.library.LibraryItem;
 import jmusic.ui.JMusicController;
+import jmusic.ui.util.FontAwesome;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -66,6 +67,7 @@ public class EditTrackController implements Initializable, ChangeListener< EditT
         mView.setData( mModel.getData() );
         trackTableView.getSelectionModel().selectedItemProperty().addListener( this );
         loadData();
+        initControls();
         initHandlers();
     }
 
@@ -188,86 +190,75 @@ public class EditTrackController implements Initializable, ChangeListener< EditT
         return theItems != null ? theItems.size() : 0;
     }
 
+    private void initControls() {
+        FontAwesome.setIcon( upButton, FontAwesome.sFA_ARROW_UP );
+        FontAwesome.setIcon( downButton, FontAwesome.sFA_ARROW_DOWN );
+    }
+
     private void initHandlers() {
-        trackNumber.textProperty().addListener( new ChangeListener< String >() {
-            @Override
-            public void changed( ObservableValue< ? extends String > inObservable, String inOldValue, String inNewValue ) {
-                if ( ! trackNumber.isFocused() ) {
-                    return;
-                }
-                for ( EditTrackItem theItem : getSelectedItems() ) {
-                    try {
-                        theItem.setTrackNumber( Integer.valueOf( inNewValue.trim() ) );
-                        mModel.setModified( theItem );
-                        setNeedsSave( true );
-                    } catch( Exception theIgnore ) {}
-                }
+        trackNumber.textProperty().addListener( ( inObservable, inOldValue, inNewValue ) -> {
+            if ( ! trackNumber.isFocused() ) {
+                return;
             }
-        } );
-        trackName.textProperty().addListener( new ChangeListener< String >() {
-            @Override
-            public void changed( ObservableValue< ? extends String > inObservable, String inOldValue, String inNewValue ) {
-                if ( ! trackName.isFocused() ) {
-                    return;
-                }
-                for ( EditTrackItem theItem : getSelectedItems() ) {
-                    theItem.setTitle( inNewValue );
+            for ( EditTrackItem theItem : getSelectedItems() ) {
+                try {
+                    theItem.setTrackNumber( Integer.valueOf( inNewValue.trim() ) );
                     mModel.setModified( theItem );
                     setNeedsSave( true );
-                }
+                } catch( Exception theIgnore ) {}
             }
         } );
-        trackArtist.textProperty().addListener( new ChangeListener< String >() {
-            @Override
-            public void changed( ObservableValue< ? extends String > inObservable, String inOldValue, String inNewValue ) {
-                if ( ! trackArtist.isFocused() ) {
-                    return;
-                }
-                for ( EditTrackItem theItem : getSelectedItems() ) {
-                    theItem.setArtistName( inNewValue );
-                    mModel.setModified( theItem );
-                    setNeedsSave( true );
-                }
+        trackName.textProperty().addListener( ( inObservable, inOldValue, inNewValue ) -> {
+            if ( ! trackName.isFocused() ) {
+                return;
+            }
+            for ( EditTrackItem theItem : getSelectedItems() ) {
+                theItem.setTitle( inNewValue );
+                mModel.setModified( theItem );
+                setNeedsSave( true );
             }
         } );
-        trackAlbum.textProperty().addListener( new ChangeListener< String >() {
-            @Override
-            public void changed( ObservableValue< ? extends String > inObservable, String inOldValue, String inNewValue ) {
-                if ( ! trackAlbum.isFocused() ) {
-                    return;
-                }
-                for ( EditTrackItem theItem : getSelectedItems() ) {
-                    theItem.setAlbumName( inNewValue );
-                    mModel.setModified( theItem );
-                    setNeedsSave( true );
-                }
+        trackArtist.textProperty().addListener( ( inObservable, inOldValue, inNewValue ) -> {
+            if ( ! trackArtist.isFocused() ) {
+                return;
+            }
+            for ( EditTrackItem theItem : getSelectedItems() ) {
+                theItem.setArtistName( inNewValue );
+                mModel.setModified( theItem );
+                setNeedsSave( true );
+            }
+        } );
+        trackAlbum.textProperty().addListener( ( inObservable, inOldValue, inNewValue ) -> {
+            if ( ! trackAlbum.isFocused() ) {
+                return;
+            }
+            for ( EditTrackItem theItem : getSelectedItems() ) {
+                theItem.setAlbumName( inNewValue );
+                mModel.setModified( theItem );
+                setNeedsSave( true );
             }
         } );
     }
 
     private void loadBrokenTracks() {
-        try {
-            final Object theLock = new Object();
-            mController.getLibrary().findBrokenTracks(
-                mController.getSelectedNavigationItem().getRootId(), new Library.BrokenTrackCallback() {
-                    @Override
-                    public void onBrokenTrackFound( String inUri ) {
-                        LibraryItem theItem = new LibraryItem();
-                        theItem.setUri( inUri );
-                        synchronized( theLock ) {
-                            // Have to fake an id to store correctly in the models
-                            // modified data map
-                            long theId = mModel.getData().size();
-                            theItem.setId( theId );
-                        }
-                        mModel.addTrack( new EditTrackItem( theItem ) );
+        final Object theLock = new Object();
+        mController.getLibrary().findBrokenTracks(
+            mController.getSelectedNavigationItem().getRootId(), new Library.BrokenTrackCallback() {
+                @Override
+                public void onBrokenTrackFound( String inUri ) {
+                    LibraryItem theItem = new LibraryItem();
+                    theItem.setUri( inUri );
+                    synchronized( theLock ) {
+                        // Have to fake an id to store correctly in the models
+                        // modified data map
+                        long theId = mModel.getData().size();
+                        theItem.setId( theId );
                     }
-                    @Override
-                    public void onComplete() {}
-                } );
-        } catch( LibraryException theException ) {
-            mLogger.throwing( "EditTrackController", "loadBrokenTracks", theException );
-        }
+                    mModel.addTrack( new EditTrackItem( theItem ) );
+                }
+                @Override
+                public void onComplete() {}
+            } );
     }
 
     private void loadData() {

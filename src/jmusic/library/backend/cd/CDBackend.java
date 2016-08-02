@@ -39,6 +39,11 @@ public class CDBackend implements Backend {
     }
 
     @Override
+    public InputStream getThumbnailInputStream( String inUri ) throws LibraryException {
+        return null;
+    }
+
+    @Override
     public InputStream getTrackInputStream( String inTrackUri, ProgressListener inListener ) throws LibraryException {
         synchronized( mLock ) {
             if ( mRootUri == null ) {

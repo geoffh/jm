@@ -6,8 +6,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.scene.control.SingleSelectionModel;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import jmusic.device.MediaDeviceDiscoveryListener;
 import jmusic.device.MediaDeviceManager;
 import jmusic.device.MediaRendererDevice;
@@ -16,10 +14,8 @@ import jmusic.library.LibraryItem;
 import jmusic.ui.ContentsChangedListener;
 import jmusic.ui.JMusicController;
 import jmusic.ui.SelectedItemListener;
-import jmusic.util.Config;
-import jmusic.util.ConfigConstants;
-import jmusic.util.PlaySelection;
-import jmusic.util.ProgressListener;
+import jmusic.ui.util.FontAwesome;
+import jmusic.util.*;
 
 import java.util.List;
 
@@ -28,14 +24,6 @@ public class PlayController implements MediaDeviceDiscoveryListener, ProgressLis
     private final PlayControls mControls;
     private final ObservableList mMediaRenderers;
     private final SingleSelectionModel< MediaRendererDevice > mMediaRenderersSelection;
-    private final ImageView mPlayImage =
-        new ImageView(
-            new Image( getClass().getClassLoader().getResourceAsStream(
-                "jmusic/resources/4_audio_play.png" ) ) );
-    private final ImageView mStopImage =
-        new ImageView(
-            new Image( getClass().getClassLoader().getResourceAsStream(
-                "jmusic/resources/4_audio_stop.png" ) ) );
     private final SimpleDoubleProperty mProgress = new SimpleDoubleProperty();
     private MediaRendererDeviceRemoteControl mRemoteControl;
     private PlaySelection mPlaySelection;
@@ -91,8 +79,9 @@ public class PlayController implements MediaDeviceDiscoveryListener, ProgressLis
 
     private void initControls() {
         mControls.getProgressBar().progressProperty().bind( mProgress );
+        FontAwesome.setIcon( mControls.getRewindButton(), FontAwesome.sFA_STEP_BACKWARD );
+        FontAwesome.setIcon( mControls.getForwardButton(), FontAwesome.sFA_STEP_FORWARD );
         initHandlers();
-        initImageViews();
     }
 
     private void initDeviceManager() {
@@ -106,29 +95,14 @@ public class PlayController implements MediaDeviceDiscoveryListener, ProgressLis
     private void initHandlers() {
         mControls.getForwardButton().setOnAction( event -> onForward() );
         mControls.getRewindButton().setOnAction( event -> onRewind() );
-        mControls.getRendererVolume().valueProperty().addListener( new ChangeListener< Number >() {
-            @Override
-            public void changed( ObservableValue< ? extends Number > inObservable, Number inOldValue, Number inNewValue ) {
-                setVolume( inNewValue.intValue() );
-            }
-        } );
+        mControls.getRendererVolume().valueProperty().addListener( ( inObservable, inOldValue, inNewValue ) -> setVolume( inNewValue.intValue() ) );
         mControls.getRendererVolume().valueProperty().set(
             Integer.parseInt( Config.getInstance().getProperty( ConfigConstants.sPropNameVolumePercent ) ) );
-        mMainController.addContentsChangedListener( new ContentsChangedListener() {
-            @Override
-            public void changed( List< LibraryItem > inContentsAdded, List< LibraryItem > inContentsRemoved ) {
-                if ( mRemoteControl == null ) {
-                    mControls.disablePlayButton( isTrackListEmpty() );
-                }
+        mMainController.addContentsChangedListener( ( inContentsAdded, inContentsRemoved ) -> {
+            if ( mRemoteControl == null ) {
+                mControls.disablePlayButton( isTrackListEmpty() );
             }
         } );
-    }
-
-    private void initImageViews() {
-        mPlayImage.setFitWidth( 20 );
-        mPlayImage.setFitHeight( 20 );
-        mStopImage.setFitWidth( 20 );
-        mStopImage.setFitHeight( 20 );
     }
 
     private boolean isTrackListEmpty() {
@@ -192,7 +166,7 @@ public class PlayController implements MediaDeviceDiscoveryListener, ProgressLis
             mRemoteControl = MediaDeviceManager.instance().createRemoteControl( mMediaRenderersSelection.getSelectedItem() );
             playNextTrack();
             mControls.enableRewindButton();
-            mControls.getPlayButton().setGraphic( mStopImage );
+            FontAwesome.setIcon( mControls.getPlayButton(), FontAwesome.sFA_STOP );
             mControls.getPlayButton().setOnAction( event -> onStop() );
             mControls.enablePlayButton();
             mControls.enableForwardButton();
@@ -208,7 +182,7 @@ public class PlayController implements MediaDeviceDiscoveryListener, ProgressLis
                 mRemoteControl.stop();
             }
             mControls.disableRewindButton();
-            mControls.getPlayButton().setGraphic( mPlayImage );
+            FontAwesome.setIcon( mControls.getPlayButton(), FontAwesome.sFA_PLAY );
             mControls.getPlayButton().setOnAction( event -> onPlay() );
             mControls.enablePlayButton( !isTrackListEmpty() );
             mControls.disableForwardButton();

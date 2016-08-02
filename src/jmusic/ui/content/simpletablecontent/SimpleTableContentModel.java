@@ -1,4 +1,4 @@
-package jmusic.ui.tablecontent;
+package jmusic.ui.content.simpletablecontent;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -6,7 +6,7 @@ import jmusic.library.LibraryItem;
 
 import java.util.Collection;
 
-class TableContentModel< T extends LibraryItem >  {
+class SimpleTableContentModel< T extends LibraryItem >  {
     private final ObservableList< T > mTracks = FXCollections.observableArrayList();
 
     void addTrack( T inTrack ) {

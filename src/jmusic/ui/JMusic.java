@@ -35,13 +35,10 @@ public class JMusic extends Application {
             new FXMLLoader( getClass().getResource( sMainDocument ) );
         Parent theRoot = theLoader.load();
         theLoader.< JMusicController >getController().init( mLibrary );
-        inPrimaryStage.setScene( new Scene( theRoot ) );
-        inPrimaryStage.setOnCloseRequest( new EventHandler< WindowEvent >() {
-            @Override
-            public void handle( WindowEvent inEvent ) {
-                System.exit( 0 );
-            }
-        } );
+        Scene theScene = new Scene( theRoot );
+        theScene.getStylesheets().addAll( getClass().getResource( "/jmusic/resources/css/root.css" ).toExternalForm() );
+        inPrimaryStage.setScene( theScene );
+        inPrimaryStage.setOnCloseRequest( inEvent -> System.exit( 0 ) );
         inPrimaryStage.show();
     }
 }

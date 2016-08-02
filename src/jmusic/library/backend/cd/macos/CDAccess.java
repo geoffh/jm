@@ -65,8 +65,8 @@ public class CDAccess implements jmusic.library.backend.cd.CDAccess {
         String getDevice() { return mDevice; }
 
         private boolean handleDRUtilInput( String inInput ) {
-            if ( inInput.indexOf( "Type:" ) != -1 ) {
-                if ( inInput.indexOf( "No Media" ) == -1 ) {
+            if ( inInput.contains( "Type:" ) ) {
+                if ( ! inInput.contains( "No Media" ) ) {
                     int theIndex = inInput.indexOf( "Name:" );
                     if ( theIndex != -1 ) {
                         mDevice = inInput.substring( theIndex + 6 );

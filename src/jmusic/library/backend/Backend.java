@@ -7,28 +7,31 @@ import jmusic.library.LibraryItem;
 import jmusic.util.ProgressListener;
 
 public interface Backend {
-    public boolean canHandleUri( String inUri );
+    boolean canHandleUri( String inUri );
 
     // writes mp3 tags to tracks
-    public void fixTrack( String inTrackUri, LibraryItem inProps )
+    void fixTrack( String inTrackUri, LibraryItem inProps )
         throws LibraryException;
 
-    public InputStream getTrackInputStream( String inTrackUri, ProgressListener inListener )
+    InputStream getThumbnailInputStream( String inUri )
         throws LibraryException;
 
-    public LibraryItem getTrack( String inTrackUri )
+    InputStream getTrackInputStream( String inTrackUri, ProgressListener inListener )
+        throws LibraryException;
+
+    LibraryItem getTrack( String inTrackUri )
         throws LibraryException;
     
-    public void importTrack( Backend inSourceBackend, String inSourceTrackUri,
+    void importTrack( Backend inSourceBackend, String inSourceTrackUri,
                              LibraryItem inTargetTrackProperties, ProgressListener inListener )
         throws LibraryException;
 
-    public boolean isWriteable();
+    boolean isWriteable();
     
     // returns uri & lastModified for each track file
-    public Map< String, LibraryItem > listTracks()
+    Map< String, LibraryItem > listTracks()
         throws LibraryException;
 
-    public void updateTrack( String inTrackUri, LibraryItem inProps )
+    void updateTrack( String inTrackUri, LibraryItem inProps )
         throws LibraryException;
 }

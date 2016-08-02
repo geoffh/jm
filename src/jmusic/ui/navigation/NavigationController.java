@@ -1,4 +1,4 @@
-package jmusic.ui.treenavigation;
+package jmusic.ui.navigation;
 
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -14,61 +14,64 @@ import javafx.stage.WindowEvent;
 import jmusic.library.LibraryBrowseResult;
 import jmusic.library.LibraryItem;
 import jmusic.library.LibraryListener;
-import jmusic.ui.*;
+import jmusic.ui.Clipboard;
+import jmusic.ui.JMusicController;
+import jmusic.ui.SelectedItemListener;
 import jmusic.ui.edittrack.EditTrackController;
+import jmusic.util.Config;
+import jmusic.util.ConfigConstants;
+import jmusic.util.ConfigListener;
 
 import java.util.*;
 
-public class TreeNavigationController implements LibraryListener, NavigationController, ChangeListener< TreeItem< LibraryItem > > {
+public class NavigationController implements LibraryListener, ConfigListener, ChangeListener< TreeItem< LibraryItem > >  {
     private final JMusicController mMainController;
-    private final TreeNavigationModel mModel = new TreeNavigationModel( this );
-    private final TreeNavigationView mView = new TreeNavigationView( this );
+    private final NavigationModel mModel = new NavigationModel( this );
+    private final NavigationView mView = new NavigationView( this );
     private final Set< SelectedItemListener > mSelectedItemListeners = new HashSet<>();
 
-    public TreeNavigationController( JMusicController inMainController ) {
+    public NavigationController( JMusicController inMainController ) {
         mMainController = inMainController;
         mMainController.getLibrary().addListener( this );
         mModel.setRootItem( mMainController.getLibrary().getRootOfRoots() );
         mView.setRoot( mModel.getData() );
         mView.getSelectedItemProperty().addListener( this );
         initViewHandlers();
+        initConfig();
     }
 
-    @Override
     public void addSelectedItemListener( SelectedItemListener inListener ) {
         synchronized( mSelectedItemListeners ) {
             mSelectedItemListeners.add( inListener );
         }
     }
 
-    @Override
     public void cancelEdit() {
         mView.cancelEdit();
     }
 
     @Override
     public void changed( ObservableValue< ? extends TreeItem< LibraryItem > > inObservable, TreeItem< LibraryItem > inOldValue, TreeItem< LibraryItem > inNewValue ) {
-        if ( mSelectedItemListeners.isEmpty() ) {
-            return;
-        }
         LibraryItem theOldValue = inOldValue != null ? inOldValue.getValue() : null;
         LibraryItem theNewValue = inNewValue != null ? inNewValue.getValue() : null;
-        synchronized( mSelectedItemListeners ) {
-            for ( SelectedItemListener theListener : mSelectedItemListeners ) {
-                theListener.changed( theOldValue, theNewValue );
-            }
-        }
+        selectionChanged( theOldValue, theNewValue );
     }
 
-    @Override
     public LibraryItem getSelectedItem() {
         TreeItem< LibraryItem > theItem = mView.getSelectedItem();
         return theItem != null ? theItem.getValue() : null;
     }
 
-    @Override
     public Node getView() {
         return mView.getTreeView();
+    }
+
+    @Override
+    public void onConfigChange( String inKey, String inOldValue, String inNewValue ) {
+        if ( ! ConfigConstants.isCategoryAppearanceNavigation( inKey ) ) {
+            return;
+        }
+        loadConfig();
     }
 
     @Override
@@ -89,10 +92,24 @@ public class TreeNavigationController implements LibraryListener, NavigationCont
         Platform.runLater( () -> mModel.updateItem( inObject ) );
     }
 
-    @Override
+    public void selectionChanged( LibraryItem inOldItem, LibraryItem inNewItem ) {
+        if (  mSelectedItemListeners.isEmpty() ) {
+            return;
+        }
+        synchronized( mSelectedItemListeners ) {
+            for ( SelectedItemListener theListener : mSelectedItemListeners ) {
+                theListener.changed( inOldItem, inNewItem );
+            }
+        }
+    }
+
+    public void setDisplayAlbums( boolean inDisplayAlbums ) {
+        mModel.setDisplayAlbums( inDisplayAlbums );
+    }
+
     public void removeSelectedItemListener( SelectedItemListener inListener ) {
         synchronized( mSelectedItemListeners ) {
-            mSelectedItemListeners.remove( inListener );
+            mSelectedItemListeners.add( inListener );
         }
     }
 
@@ -197,13 +214,17 @@ public class TreeNavigationController implements LibraryListener, NavigationCont
         mMainController.onNavigationViewMouseClicked( inEvent );
     }
 
+    private void initConfig() {
+        Config.getInstance().addListener( this );
+        loadConfig();
+    }
+
     private void initViewHandlers() {
         mView.getTreeView().setOnEditCommit( this::handleOnEditCommit );
         mView.getTreeView().setOnKeyPressed( this::handleOnKeyPressed );
         mView.getTreeView().setOnKeyReleased( this::handleOnKeyReleased );
         mView.getTreeView().setOnMouseClicked( this::handleOnMouseClicked );
         mView.getContextMenu().setOnShown( this::handleContextMenuOnShown );
-        //mView.getContextMenu().setOnAction( this::handleContextMenuOnAction );
         mView.getMenuItemBrokenTracks().setOnAction( this::handleContextMenuOnAction );
         mView.getMenuItemCopy().setOnAction( this::handleContextMenuOnAction );
         mView.getMenuItemNewPlaylist().setOnAction( this::handleContextMenuOnAction );
@@ -212,6 +233,13 @@ public class TreeNavigationController implements LibraryListener, NavigationCont
         mView.getMenuItemRefresh().setOnAction( this::handleContextMenuOnAction );
         mView.getMenuItemRemove().setOnAction( this::handleContextMenuOnAction );
         mView.getMenuItemUnknownTracks().setOnAction( this::handleContextMenuOnAction );
+    }
+
+    private void loadConfig() {
+        boolean displayAlbums = Boolean.valueOf(
+                Config.getInstance().getProperty(
+                        ConfigConstants.sPropNameNavigationDisplayAlbums, ConfigConstants.sPropNavigationDisplayAlbumsDefault ) );
+        setDisplayAlbums( displayAlbums );
     }
 
     private void processObjectCreationOrDeletion( LibraryItem inObject, boolean inIsCreation ) {

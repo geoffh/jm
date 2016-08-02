@@ -1,4 +1,4 @@
-package jmusic.ui.treenavigation;
+package jmusic.ui.navigation;
 
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.scene.control.*;
@@ -10,9 +10,9 @@ import javafx.util.StringConverter;
 import jmusic.library.LibraryItem;
 import jmusic.ui.Clipboard;
 
-class TreeNavigationView {
+class NavigationView {
     private final TreeView< LibraryItem > mView = new TreeView<>();
-    private final TreeNavigationController mController;
+    private final NavigationController mController;
     private Cell mEditingCell;
     private final ContextMenu mContextMenu =  new ContextMenu();
     private final Menu mNewMenu = new Menu( "New" );
@@ -25,10 +25,9 @@ class TreeNavigationView {
     private final MenuItem mMenuItemPaste = new MenuItem( "Paste" );
     private final MenuItem mMenuItemRemove = new MenuItem( "Remove" );
 
-    TreeNavigationView( TreeNavigationController inController ) {
+    NavigationView( NavigationController inController ) {
         mController = inController;
-        mView.setShowRoot( false );
-        mView.setCellFactory( new ContainerViewCellFactory( this ) );
+        initView();
         initContextMenu();
     }
 
@@ -108,17 +107,22 @@ class TreeNavigationView {
         mView.setContextMenu( mContextMenu );
     }
 
+    private void initView() {
+        mView.setShowRoot( false );
+        mView.setCellFactory( new ContainerViewCellFactory( this ) );
+    }
+
     private void startEdit( Cell inCell ) {
         mEditingCell = inCell;
     }
 
-    class ContainerViewCellFactory implements Callback< TreeView< LibraryItem >,
-        TreeCell< LibraryItem > > {
-        private final TreeNavigationView mView;
+    class ContainerViewCellFactory implements Callback< TreeView< LibraryItem >, TreeCell< LibraryItem > > {
+        private final NavigationView mView;
 
-        ContainerViewCellFactory( TreeNavigationView inView ) {
+        ContainerViewCellFactory( NavigationView inView ) {
             mView = inView;
         }
+
         @Override
         public TreeCell< LibraryItem > call( TreeView< LibraryItem > inView ) {
             CancellableTextFieldTreeCell theTreeCell = new CancellableTextFieldTreeCell( mView );
@@ -172,9 +176,9 @@ class TreeNavigationView {
     }
 
     class CancellableTextFieldTreeCell extends TextFieldTreeCell< LibraryItem > {
-        private final TreeNavigationView mView;
+        private final NavigationView mView;
 
-        CancellableTextFieldTreeCell( TreeNavigationView inView ) {
+        CancellableTextFieldTreeCell( NavigationView inView ) {
             super();
             mView = inView;
             ContainerViewStringConverter theConverter = new ContainerViewStringConverter();
@@ -185,6 +189,16 @@ class TreeNavigationView {
         public void startEdit( ) {
             super.startEdit();
             mView.startEdit( this );
+        }
+
+        @Override
+        public void updateItem( LibraryItem inItem, boolean inIsEmpty ) {
+            super.updateItem( inItem, inIsEmpty );
+            if ( ! inIsEmpty ) {
+                setText( inItem != null ? inItem.getTitle() : "" );
+            } else {
+                setText( null );
+            }
         }
     }
 

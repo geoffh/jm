@@ -1,10 +1,9 @@
 package jmusic.library.persistence;
 
 public interface PersistenceListener {
+    void onPostPersist( PersistentObject inObject );
 
-    public void onPostPersist( PersistentObject inObject );
+    void onPostRemove( PersistentObject inObject );
 
-    public void onPostRemove( PersistentObject inObject );
-
-    public void onPostUpdate( PersistentObject inObject );
+    void onPostUpdate( PersistentObject inObject );
 }

@@ -14,9 +14,22 @@ public class ConfigConstants {
     public static final String sPropNameMusicSourceRefreshInterval = sCategoryMusicSource + "%s.refreshInterval";
     public static final String sPropMusicSourceRefreshEnabledDefault = "true";
 
+    public static final String sCategoryAppearance = sJMUsic + ".appearance";
+    public static final String sCategoryAppearanceNavigation = sCategoryAppearance + ".navigation.";
+    public static final String sPropNameNavigationDisplayAlbums = sCategoryAppearanceNavigation + "displayAlbums";
+    public static final String sPropNavigationDisplayAlbumsDefault = "true";
+
     public static final String sPropNameLogLevel = ".level";
 
     public static final String sPropNameVolumePercent = sJMUsic + ".volumePercent";
+
+    public static boolean isCategoryAppearance( String inPropName ) {
+        return inPropName.startsWith( sCategoryAppearance );
+    }
+
+    public static boolean isCategoryAppearanceNavigation( String inPropName ) {
+        return inPropName.startsWith( sCategoryAppearanceNavigation );
+    }
 
     public static boolean isCategoryLogLevel( String inPropName ) {
         return inPropName.endsWith( sPropNameLogLevel );

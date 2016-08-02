@@ -35,8 +35,7 @@ public class UPNPMediaRendererDeviceRemoteControl implements MediaRendererDevice
         new UDAServiceId( "RenderingControl" );
     private final Device mDevice;
     private final Logger mLogger = Logger.getLogger( getClass().getName() );
-    private final ArrayList< ProgressListener > mProgressListeners =
-        new ArrayList< ProgressListener >();
+    private final ArrayList< ProgressListener > mProgressListeners = new ArrayList<>();
     private ProgressListenerThread mProgressListenerThread;
 
     public UPNPMediaRendererDeviceRemoteControl( MediaRendererDevice inDevice ) {

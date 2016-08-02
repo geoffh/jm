@@ -5,11 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import jmusic.library.Library;
@@ -30,19 +26,24 @@ public class SettingsController implements Initializable, ChangeListener< Tab > 
     private Stage mStage;
     private JMusicController mController;
     private SettingsHandler mMusicSourcesController;
+    private SettingsHandler mAppearanceController;
     private SettingsHandler mAdvancedController;
     @FXML private TabPane settingsTabPane;
     @FXML private Tab settingsMusicSourcesTab;
+    @FXML private Tab settingsAppearanceTab;
     @FXML private Tab settingsAdvancedTab;
     @FXML private AnchorPane settingsAdvancedTabAnchorPane;
     @FXML private ChoiceBox< ConfigConstants.RefreshChoice > settingsMusicSourcesRefreshChoice;
     @FXML private TextField settingsMusicSourcesRefreshInterval;
+    @FXML private CheckBox settingsAppearanceDisplayAlbumsCheckbox;
     @FXML private TableView< SettingsMusicSourcesHandler.MusicSourceItem > settingsMusicSourcesTableView;
 
     @Override
     public void changed( ObservableValue< ? extends Tab > inObservable, Tab inOldValue, Tab inNewValue ) {
         if ( settingsAdvancedTab == inNewValue && mAdvancedController == null ) {
             mAdvancedController = new SettingsAdvancedHandler( this );
+        } else if ( settingsAppearanceTab == inNewValue ) {
+            mAppearanceController = new SettingsAppearanceHandler( this );
         } else if ( settingsMusicSourcesTab == inNewValue ) {
             mMusicSourcesController = new SettingsMusicSourcesHandler( this );
         }
@@ -61,6 +62,10 @@ public class SettingsController implements Initializable, ChangeListener< Tab > 
 
     @Override
     public void initialize( URL inLocation, ResourceBundle inResources ) {}
+
+    CheckBox getAppearanceDisplayAlbumsCheckBox() {
+        return settingsAppearanceDisplayAlbumsCheckbox;
+    }
 
     Library getLibrary() { return mController.getLibrary(); }
 
@@ -83,8 +88,15 @@ public class SettingsController implements Initializable, ChangeListener< Tab > 
     private void handleOKButtonAction( ActionEvent inEvent ) {
         Map< String, String > theSettings = new HashMap<>();
         Set< String > theRemovals = new HashSet<>();
-        mMusicSourcesController.getSettings( theSettings, theRemovals );
-        mAdvancedController.getSettings( theSettings, theRemovals );
+        if ( mMusicSourcesController != null ) {
+            mMusicSourcesController.getSettings( theSettings, theRemovals );
+        }
+        if ( mAppearanceController != null ) {
+            mAppearanceController.getSettings( theSettings, theRemovals );
+        }
+        if ( mAdvancedController != null ) {
+            mAdvancedController.getSettings( theSettings, theRemovals );
+        }
         Config.getInstance().setProperties( theSettings );
         Config.getInstance().removeProperties( theRemovals );
         mStage.close();

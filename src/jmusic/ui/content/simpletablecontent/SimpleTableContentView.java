@@ -1,4 +1,4 @@
-package jmusic.ui.tablecontent;
+package jmusic.ui.content.simpletablecontent;
 
 import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.ReadOnlyDoubleProperty;
@@ -15,22 +15,22 @@ import jmusic.ui.Clipboard;
 import java.util.ArrayList;
 import java.util.List;
 
-class TableContentView {
+class SimpleTableContentView {
     static final int sColumnNumber = 0;
     static final int sColumnTitle  = 1;
     static final int sColumnAlbum  = 2;
     static final int sColumnArtist = 3;
 
-    private final TableView< TableContentItem > mView = new TableView<>();
-    private final List< TableColumn< TableContentItem, String > > mColumns = new ArrayList<>();
+    private final TableView< SimpleTableContentItem > mView = new TableView<>();
+    private final List< TableColumn< SimpleTableContentItem, String > > mColumns = new ArrayList<>();
     private final ContextMenu mContextMenu =  new ContextMenu();
     private final MenuItem mMenuItemEdit = new MenuItem( "Edit ..." );
     private final MenuItem mMenuItemCopy = new MenuItem( "Copy" );
     private final MenuItem mMenuItemRemove = new MenuItem( "Remove ..." );
-    private final TableContentController mController;
+    private final SimpleTableContentController mController;
     private Cell mEditingCell;
 
-    TableContentView( TableContentController inController ) {
+    SimpleTableContentView( SimpleTableContentController inController ) {
         mController = inController;
         mView.getSelectionModel().setSelectionMode( SelectionMode.MULTIPLE );
         mView.setRowFactory( new TrackViewRowFactory() );
@@ -49,7 +49,7 @@ class TableContentView {
         mView.getSelectionModel().clearSelection();
     }
 
-    List< TableColumn< TableContentItem, String > > getColumns() {
+    List< TableColumn< SimpleTableContentItem, String > > getColumns() {
         return mColumns;
     }
 
@@ -57,7 +57,7 @@ class TableContentView {
         return mContextMenu;
     }
 
-    ObservableList< TableContentItem > getItems() { return mView.getItems(); }
+    ObservableList< SimpleTableContentItem > getItems() { return mView.getItems(); }
 
     MenuItem getMenuItemCopy() {
         return mMenuItemCopy;
@@ -75,19 +75,19 @@ class TableContentView {
         return mView.getSelectionModel().getSelectedIndex();
     }
 
-    ObservableList< TableContentItem > getSelectedItems() {
+    ObservableList< SimpleTableContentItem > getSelectedItems() {
         return mView.getSelectionModel().getSelectedItems();
     }
 
-    TableView< TableContentItem > getTableView() {
+    TableView< SimpleTableContentItem > getTableView() {
         return mView;
     }
 
-    void selectItem( TableContentItem inItem ) {
+    void selectItem( SimpleTableContentItem inItem ) {
         mView.getSelectionModel().select( inItem );
     }
 
-    void setData( ObservableList< TableContentItem > inData ) {
+    void setData( ObservableList< SimpleTableContentItem > inData ) {
         mView.setItems( inData );
     }
 
@@ -103,31 +103,31 @@ class TableContentView {
         ReadOnlyDoubleProperty theWidth = mView.widthProperty();
         mColumns.add(
                 createColumn( theWidth.multiply( 0.1 ),
-                        TableContentItem.sColumnHeaderNumber,
-                        TableContentItem.sPropertyNameNumber ) );
+                        SimpleTableContentItem.sColumnHeaderNumber,
+                        SimpleTableContentItem.sPropertyNameNumber ) );
         mColumns.add(
                 createColumn( theWidth.multiply( 0.5 ),
-                    TableContentItem.sColumnHeaderTitle,
-                    TableContentItem.sPropertyNameTitle ) );
+                    SimpleTableContentItem.sColumnHeaderTitle,
+                    SimpleTableContentItem.sPropertyNameTitle ) );
         mColumns.add(
             createColumn( theWidth.multiply( 0.25 ),
-                    TableContentItem.sColumnHeaderAlbum,
-                    TableContentItem.sPropertyNameAlbum ) );
+                    SimpleTableContentItem.sColumnHeaderAlbum,
+                    SimpleTableContentItem.sPropertyNameAlbum ) );
         mColumns.add(
             createColumn( theWidth.multiply( 0.15 ),
-                    TableContentItem.sColumnHeaderArtist,
-                    TableContentItem.sPropertyNameArtist ) );
-        for ( TableColumn< TableContentItem, String > theColumn : mColumns ) {
+                    SimpleTableContentItem.sColumnHeaderArtist,
+                    SimpleTableContentItem.sPropertyNameArtist ) );
+        for ( TableColumn< SimpleTableContentItem, String > theColumn : mColumns ) {
             mView.getColumns().add( theColumn );
         }
     }
 
-    private TableColumn< TableContentItem, String > createColumn(
+    private TableColumn< SimpleTableContentItem, String > createColumn(
         DoubleBinding inWidth, String inColumnHeaderString, String inTrackPropertyName ) {
-        TableColumn< TableContentItem, String > theColumn = new TableColumn<>( inColumnHeaderString );
+        TableColumn< SimpleTableContentItem, String > theColumn = new TableColumn<>( inColumnHeaderString );
         theColumn.prefWidthProperty().bind( inWidth );
         theColumn.setCellValueFactory( new PropertyValueFactory( inTrackPropertyName ) );
-        theColumn.setCellFactory( CancellableTextFieldTableCell.< TableContentItem >forTableColumn( this ) );
+        theColumn.setCellFactory( CancellableTextFieldTableCell.< SimpleTableContentItem >forTableColumn( this ) );
         return theColumn;
     }
 
@@ -140,11 +140,11 @@ class TableContentView {
         mView.setContextMenu( mContextMenu );
     }
 
-    private class TrackViewRowFactory implements Callback< TableView< TableContentItem >, TableRow< TableContentItem > > {
+    private class TrackViewRowFactory implements Callback< TableView< SimpleTableContentItem >, TableRow< SimpleTableContentItem > > {
         @Override
-        public TableRow< TableContentItem > call( TableView< TableContentItem > inTableView ) {
-            TableRow< TableContentItem > theTableRow = new TableRow< TableContentItem >() {
-                protected void updateItem( TableContentItem inItem, boolean inEmpty ) {
+        public TableRow< SimpleTableContentItem > call( TableView< SimpleTableContentItem > inTableView ) {
+            TableRow< SimpleTableContentItem > theTableRow = new TableRow< SimpleTableContentItem >() {
+                protected void updateItem( SimpleTableContentItem inItem, boolean inEmpty ) {
                     super.updateItem( inItem, inEmpty );
                 }
             };
@@ -159,10 +159,10 @@ class TableContentView {
         }
     }
 
-    static class CancellableTextFieldTableCell extends TextFieldTableCell< TableContentItem, String > {
-        private final TableContentView mView;
+    static class CancellableTextFieldTableCell extends TextFieldTableCell< SimpleTableContentItem, String > {
+        private final SimpleTableContentView mView;
 
-        public CancellableTextFieldTableCell( TableContentView inView ) {
+        public CancellableTextFieldTableCell( SimpleTableContentView inView ) {
             super( new DefaultStringConverter() );
             mView = inView;
         }
@@ -172,7 +172,7 @@ class TableContentView {
             mView.startEdit( this );
         }
 
-        public static Callback< TableColumn< TableContentItem, String >, TableCell< TableContentItem, String > > forTableColumn( TableContentView inView ) {
+        public static Callback< TableColumn< SimpleTableContentItem, String >, TableCell< SimpleTableContentItem, String > > forTableColumn( SimpleTableContentView inView ) {
             return inParam -> new CancellableTextFieldTableCell( inView );
         }
     }

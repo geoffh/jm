@@ -1,6 +1,5 @@
 package jmusic.youtube;
 
-import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.javanet.NetHttpTransport;
@@ -25,9 +24,7 @@ public class Youtube {
     }
 
     public void search( String inSearchTerm, String inPageToken, long inMaxResults ) throws IOException {
-        YouTube theYouTube = new YouTube.Builder( new NetHttpTransport(), new GsonFactory(), new HttpRequestInitializer() {
-            public void initialize( HttpRequest request ) throws IOException {
-            }
+        YouTube theYouTube = new YouTube.Builder( new NetHttpTransport(), new GsonFactory(), request -> {
         } ).setApplicationName( sApplicationName ).build();
         YouTube.Search.List theSearch = theYouTube.search().list( sSearchPart );
         theSearch.setFields( sSearchFields );
@@ -52,9 +49,7 @@ public class Youtube {
             }
             theStringBuilder.append(theId);
         }
-        YouTube theYouTube = new YouTube.Builder( new NetHttpTransport(), new GsonFactory(), new HttpRequestInitializer() {
-            public void initialize( HttpRequest request ) throws IOException {
-            }
+        YouTube theYouTube = new YouTube.Builder( new NetHttpTransport(), new GsonFactory(), request -> {
         } ).setApplicationName( sApplicationName ).build();
         YouTube.Videos.List vSearch = theYouTube.videos().list( "snippet, player" );
         vSearch.setKey( "AIzaSyAYhQtEBRSUneIdh-rqFuPcqNR0T5C_aCE" );
