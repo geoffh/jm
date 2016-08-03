@@ -67,12 +67,12 @@ public class PlayController implements MediaDeviceDiscoveryListener, ProgressLis
     }
 
     private PlaySelection createPlaySelection() {
-        int theFirstIndex = mMainController.getSelectedContentIndex();
-        theFirstIndex = theFirstIndex >= 0 ? theFirstIndex : 0;
-        List< LibraryItem > theList = mMainController.getContentItems();
+        List< LibraryItem > theItems = mMainController.getContentItems();
+        List< LibraryItem > theSelectedItems = mMainController.getSelectedContentItems();
+        int theFirstIndex = theSelectedItems.isEmpty() ? 0 :  theItems.indexOf( theSelectedItems.get( 0 ) );
         PlaySelection thePlaySelection = new PlaySelection( false );
-        for ( int theIndex = theFirstIndex ; theIndex < theList.size(); theIndex ++ ) {
-            thePlaySelection.addItem( theList.get( theIndex ) );
+        for ( int theIndex = theFirstIndex ; theIndex < theItems.size(); theIndex ++ ) {
+            thePlaySelection.addItem( theItems.get( theIndex ) );
         }
         return thePlaySelection;
     }

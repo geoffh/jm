@@ -118,10 +118,6 @@ public class JMusicController implements Initializable {
 
     public Library getLibrary() { return mLibrary; }
 
-    public int getSelectedContentIndex() {
-        return mContentController.getSelectedIndex();
-    }
-
     public List< LibraryItem > getSelectedContentItems() {
         return mContentController.getSelectedItems();
     }
