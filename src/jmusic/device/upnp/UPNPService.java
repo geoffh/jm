@@ -10,7 +10,6 @@ public class UPNPService {
     private static final UpnpService sService = new UpnpServiceImpl( sServiceConfiguration );
 
     static {
-        // Test commit
         Runtime.getRuntime().addShutdownHook( new Thread() {
                 @Override
                 public void run() {
